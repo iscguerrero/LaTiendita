@@ -55,3 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['Login'] = 'Login/Index';
 $route['Inventarios'] = 'Inventarios/Index';
+$route['Punto'] = 'Punto/Index';
+$route['Acceder'] = 'Login/Acceder';

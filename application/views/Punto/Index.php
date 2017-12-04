@@ -1,9 +1,9 @@
-<?php $this->layout('Layout', ['title'=>'Inventarios'])?>
+<?php $this->layout('Layout', ['title'=>'Punto de Venta'])?>
 <?php $this->start('css')?>
 <?php $this->stop()?>
 <?php $this->start('vista')?>
 
-Inventarios
+punto de venta
 
 <?php $this->stop()?>
 <?php $this->start('js')?>

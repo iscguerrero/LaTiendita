@@ -14,7 +14,6 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/themify-icons.css') ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/demo.css') ?>"/>
 </head>
-
 <body>
 	<nav class="navbar navbar-transparent navbar-absolute">
 		<div class="container">
@@ -41,7 +40,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-							<form method="#" action="#">
+							<form method="#" action="#" id="formAcceder">
 								<div class="card" data-background="color" data-color="blue">
 									<div class="card-header">
 										<h3 class="card-title">Acceso</h3>
@@ -49,11 +48,11 @@
 									<div class="card-content">
 										<div class="form-group">
 											<label>Usuario</label>
-											<input placeholder="Usuario" class="form-control input-no-border">
+											<input type="text" class="form-control input-no-border" name="cve_usuario" id="cve_usuario" placeholder="Usuario">
 										</div>
 										<div class="form-group">
 											<label>Contraseña</label>
-											<input type="password" placeholder="Contraseña" class="form-control input-no-border">
+											<input type="password" class="form-control input-no-border" placeholder="Contraseña" name="contrasenia" id="contrasenia">
 										</div>
 									</div>
 									<div class="card-footer text-center">
@@ -86,18 +85,6 @@
 	<script src="<?php echo base_url('assets/js/sweetalert2.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap-switch-tags.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/paper-dashboard.js') ?>"></script>
-	<script type="text/javascript">
-		$().ready(function(){
-			$page = $('.full-page');
-			image_src = $page.data('image');
-			if (image_src !== undefined) {
-				image_container = '<div class="full-page-background" style="background-image: url(' + image_src + ') "/>'
-				$page.append(image_container);
-			}
-			setTimeout(function(){
-				$('.card').removeClass('card-hidden');
-			}, 700)
-		});
-	</script>
-
+	<script src="<?php echo base_url('public/js/master.js') ?>"></script>
+	<script src="<?php echo base_url('public/js/Login/Index.js') ?>"></script>
 </html>
