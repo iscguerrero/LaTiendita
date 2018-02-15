@@ -19,17 +19,11 @@
 	<div class="wrapper">
 		<div class="sidebar" data-background-color="brown" data-active-color="danger">
 			<div class="logo">
-				<a href="<?php echo base_url('Escritorio/Inicio') ?>" class="simple-text logo-mini">mSV</a>
-				<a href="<?php echo base_url('Escritorio/Inicio') ?>" class="simple-text logo-normal">mS Vizarrón</a>
+				<a href="<?php echo base_url('Punto') ?>" class="simple-text logo-mini">mSV</a>
+				<a href="<?php echo base_url('Punto') ?>" class="simple-text logo-normal">miniSuper Vega</a>
 			</div>
 			<div class="sidebar-wrapper">
 				<ul class="nav">
-					<li>
-						<a href="<?php echo base_url('Escritorio/Inicio') ?>">
-							<i class="ti-panel"></i>
-							<p>Escritorio</p>
-						</a>
-					</li>
 					<li>
 						<a href="<?php echo base_url('Punto/Inicio') ?>">
 							<i class="ti-shopping-cart-full"></i>
@@ -37,21 +31,9 @@
 						</a>
 					</li>
 					<li>
-						<a href="<?php echo base_url('Principal/Inicio') ?>">
-							<i class="ti-home"></i>
-							<p>Principal</p>
-						</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url('Inventarios/Inicio') ?>">
-							<i class="ti-clipboard"></i>
-							<p>Inventarios</p>
-						</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url('Reportes/Inicio') ?>">
-							<i class="ti-stats-up"></i>
-							<p>Reportes</p>
+						<a href="<?php echo base_url('Inventarios/Ingreso') ?>">
+							<i class="ti-package"></i>
+							<p>Inventario</p>
 						</a>
 					</li>
 				</ul>
@@ -117,6 +99,5 @@
 	<script src="<?php echo base_url('assets/js/sweetalert2.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-selectpicker.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/paper-dashboard.js') ?>"></script>
-	<script src="<?php echo base_url('public/js/master.js') ?>"></script>
 	<?php echo $this->section('js')?>
 </html>

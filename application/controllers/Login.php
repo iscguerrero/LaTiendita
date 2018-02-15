@@ -10,21 +10,21 @@ class Login extends CI_Controller{
 	}
 
 	# Metodo para retornar la vista del login del sistema
-	public function Index(){
+	public function Inicio(){
 		if ($this->session->userdata() && $this->session->userdata('logueado') == true) {
 			switch ($this->session->userdata('cve_perfil')) {
 				case '001':
-					redirect(base_url('Punto'));
+					redirect(base_url('Punto/Inicio'));
 					break;
 				case '002':
-					redirect(base_url('Escritorio'));
+					redirect(base_url('Escritorio/Inicio'));
 					break;
 				default:
-					redirect(base_url('Escritorio'));
+					redirect(base_url('Punto/Inicio'));
 					break;
 			}
 		} else{
-			$this->load->view('Login/Index');
+			$this->load->view('Login/Inicio');
 		}
 	}
 
@@ -66,7 +66,7 @@ class Login extends CI_Controller{
 
 	# Metodo para dar de alta un nuevo usuario
 	public function Alta() {
-		if(!$this->input->is_ajax_request()) show_404();
+		/*if(!$this->input->is_ajax_request()) show_404();
 		# Validamos los datos del formulario
 		$this->form_validation->set_rules('cve_usuario', 'Usuario', 'trim|required|min_length[4]|is_unique[gl_cat_usuarios.cve_usuario]', array(
 			'required' => 'El campo Usuario es requerido',
@@ -96,7 +96,7 @@ class Login extends CI_Controller{
 		# Retornamos los errrores de validacion en caso de que estos se presente
 		if ($this->form_validation->run() === false) {
 			exit(json_encode(array('bandera'=>false, 'msj'=>'Las validaciones del formulario no se completaron, atiende:<br>' . validation_errors())));
-		} else {
+		} else {*/
 			# Guardamos los parametros de la peticion en variables locales
 			$data = array(
 				'cve_usuario' => $this->input->get('cve_usuario'),
@@ -113,7 +113,7 @@ class Login extends CI_Controller{
 			} else {
 				exit(json_encode(array('bandera'=>false, 'msj'=>'Se presento un error al crear el registro')));
 			}
-		}
+		//}
 	}
 
 	# Metodo para destruir los variables de sesion del usuario logueado

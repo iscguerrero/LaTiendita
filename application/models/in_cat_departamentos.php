@@ -1,10 +1,10 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class in_cat_marcas extends Base_Model {
+class in_cat_departamentos extends Base_Model {
 	public function  __construct() {
 		parent::__construct();
-		$this->table = 'in_cat_marcas';
-		$this->primary_key = 'cve_marca';
+		$this->table = 'in_cat_familias';
+		$this->primary_key = 'cve_departamento';
 		$this->return_type = 'array';
 	}
 

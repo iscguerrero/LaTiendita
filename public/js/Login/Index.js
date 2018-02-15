@@ -12,20 +12,25 @@ $(document).ready(function () {
 	$('#formAcceder').submit(function (e) {
 		e.preventDefault();
 		str = $('#formAcceder').serialize();
-		response = ajax('./Acceder', str);
+		response = ajax('./Login/Acceder', str);
 		if (response.bandera == true) {
-			switch (response.data.cve_perfil) {
+			switch (response.cve_perfil) {
 				case '001':
-					window.location.replace('./Punto');
+					window.location.replace('./Punto/Inicio');
 					break;
 				case '002':
-					window.location.replace('./Escritorio');
+					window.location.replace('./Escritorio/Inicio');
 				default:
 					window.location.replace('');
 					break;
 			}
 		} else {
-			console.log('error');
+			swal({
+				title: "Atiende!",
+				html: response.msj,
+				buttonsStyling: true,
+				confirmButtonClass: "btn btn-warning btn-fill"
+			});
 		}
 	});
 });

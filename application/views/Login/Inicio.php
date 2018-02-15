@@ -9,7 +9,8 @@
 	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>"/>
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/paper-dashboard.css') ?>"/>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+	<link rel="stylesheet" 
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome4.min.css') ?>">
 	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli:400,300' type='text/css'>
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/themify-icons.css') ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/demo.css') ?>"/>
@@ -24,7 +25,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<?php echo base_url() ?>">La Tiendita</a>
+				<a class="navbar-brand" href="<?php echo base_url() ?>">miniSuper Vega</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -35,7 +36,6 @@
 
 	<div class="wrapper wrapper-full-page">
 		<div class="full-page login-page" data-color="" data-image="<?php echo base_url('assets/img/background/bg2.jpg') ?>">
-		<!--   you can change the color of the filter page using: data-color="blue | azure | green | orange | red | purple" -->
 			<div class="content">
 				<div class="container">
 					<div class="row">
@@ -56,7 +56,7 @@
 										</div>
 									</div>
 									<div class="card-footer text-center">
-										<button type="submit" class="btn btn-fill btn-wd">Acceder</button>
+										<button type="submit" class="btn btn-fill btn-wd"><i class="fa fa-sign-in"></i> Acceder</button>
 									</div>
 								</div>
 							</form>
@@ -64,7 +64,6 @@
 					</div>
 				</div>
 			</div>
-
 			<footer class="footer footer-transparent">
 				<div class="container">
 					<div class="copyright">
@@ -78,7 +77,6 @@
 
 	<!--   Core JS Files. Extra: TouchPunch for touch library inside jquery-ui.min.js   -->
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.1.1.min.js') ?>"></script>
-	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/perfect-scrollbar.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/es6-promise-auto.min.js') ?>"></script>
