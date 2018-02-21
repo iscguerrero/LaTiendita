@@ -3,7 +3,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class in_cat_departamentos extends Base_Model {
 	public function  __construct() {
 		parent::__construct();
-		$this->table = 'in_cat_familias';
+		$this->table = 'in_cat_departamentos';
 		$this->primary_key = 'cve_departamento';
 		$this->return_type = 'array';
 	}

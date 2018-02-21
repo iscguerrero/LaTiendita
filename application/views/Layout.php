@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>"/>
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/paper-dashboard.css') ?>"/>
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome4.min.css') ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/jquery-ui.min.css') ?>">
 	<link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/themify-icons.css') ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/demo.css') ?>"/>
@@ -111,12 +112,13 @@
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/perfect-scrollbar.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/es6-promise-auto.min.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/bootstrap-switch-tags.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/bootstrap-notify.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/sweetalert2.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/es6-promise-auto.min.js') ?>"></script>
+	<script type="text/javascript"src="<?php echo base_url('assets/js/bootstrap-switch-tags.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-notify.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/sweetalert2.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-selectpicker.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/paper-dashboard.js') ?>"></script>
-	<script src="<?php echo base_url('public/js/master.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.cookie.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/paper-dashboard.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('public/js/master.js') ?>"></script>
 	<?php echo $this->section('js')?>
 </html>

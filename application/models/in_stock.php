@@ -1,10 +1,10 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class in_cat_metricas extends Base_Model {
+class in_stock extends Base_Model {
 	public function  __construct() {
 		parent::__construct();
-		$this->table = 'in_cat_metricas';
-		$this->primary_key = 'cve_metrica';
+		$this->table = 'in_stock';
+		$this->primary_key = 'id';
 		$this->return_type = 'array';
 	}
 

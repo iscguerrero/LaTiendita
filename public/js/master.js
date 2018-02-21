@@ -18,3 +18,41 @@ var ajax = function (url, str) {
 	});
 	return response;
 }
+
+// Funcion para obtener la lista de marcas registradas en el sistema
+function ObtenerMarcas() {
+	return ajax('ObtenerMarcas', null);
+}
+
+// Funcion para obtener la lista de departamentos registrados en el sistema
+function ObtenerDepartamentos() {
+	return ajax('ObtenerDepartamentos', null);
+}
+
+// Funcion para obtener la lista de metricas registrados en el sistema
+function ObtenerMetricas() {
+	return ajax('ObtenerMetricas', null);
+}
+
+// Funcion para obtener el catálogo de tipos de movimientos
+function ObtenerCatMovimientos(str) {
+	return ajax('ObtenerCatMovimientos', str);
+}
+
+// Funcion para setear la informacion de un producto en en formulario de la vista
+function setearProducto(producto) {
+	$('#inputCveCatProducto').val(producto.cve_cat_producto);
+	$('#ckSi').prop('checked', producto.inventariable == 1 ? true : false);
+	$('#ckNo').prop('checked', producto.inventariable == 0 ? true : false);
+	$('#inputCodigo').val(producto.codigo_de_barras);
+	$('#inputDescripcion').val(producto.descripcion);
+	$('#selectMarca').val(producto.cve_marca);
+	$('#selectDepartamento').val(producto.cve_departamento);
+	$('#inputPrecio').val(producto.precio_unitario);
+	$('#inputCosto').val(producto.costo_unitario);
+	$('#inputExistencia').val(producto.existencia);
+	$('#inputPresentacion').val(producto.presentacion);
+	$('#selectMetrica').val(producto.cve_metrica);
+	$('#selectVenta').val(producto.es_venta);
+	$('#selectStatus').val(producto.estatus);
+}
