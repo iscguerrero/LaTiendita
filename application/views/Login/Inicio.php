@@ -25,7 +25,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<?php echo base_url() ?>">miniSuper Vega</a>
+				<a class="navbar-brand" href="<?php echo base_url() ?>">miniSuper Vizarrón</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -35,7 +35,7 @@
 	</nav>
 
 	<div class="wrapper wrapper-full-page">
-		<div class="full-page login-page" data-color="" data-image="<?php echo base_url('assets/img/background/bg2.jpg') ?>">
+		<div class="full-page login-page" data-color="" data-image="<?php echo base_url('assets/img/background/bg.jpg') ?>">
 			<div class="content">
 				<div class="container">
 					<div class="row">

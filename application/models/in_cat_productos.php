@@ -44,6 +44,16 @@ class in_cat_productos extends Base_Model {
 		return $query->result();
 	}
 
+	# Busqueda de productos por medio del codigo de barras
+	public function buscarCodigo($codigo) {
+		$this->db->select('icp.codigo_de_barras, icp.cve_cat_producto, icp.descripcion as value, icd.descripcion as departamento, icm.descripcion as marca')
+		->from('in_cat_productos icp')
+		->join('in_cat_departamentos icd', 'icp.cve_departamento = icd.cve_departamento', 'INNER')
+		->join('in_cat_marcas icm', 'icp.cve_marca = icm.cve_marca', 'INNER')
+		->where('icp.codigo_de_barras', $codigo);
+		return $this->db->get()->row();
+	}
+
 	# Nuevo registro para la tabla
 	public function alta($data) {
 		return $this->save($data);

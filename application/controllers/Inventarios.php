@@ -123,14 +123,16 @@ class Inventarios extends Base_Controller {
 
 		}
 		public function CrudProducto() {
+			if( $this->input->post('inputCveCatProducto') == '' ) {
+				$this->form_validation->set_rules('inputCodigo', 'Código', 'required|is_unique[in_cat_productos.codigo_de_barras]|integer', array('required'=>'Ingresa el código de barras del producto', 'is_unique'=>'El código ingresado ya se encuentra registrado', 'integer'=>'El código de barras debe ser una cadena de solo dígitos'));
+				$this->form_validation->set_rules('inputExistencia', 'Existencia', 'required|numeric', array('required'=>'Ingresa la existencia inicial del producto', 'numeric'=>'Ingrese la existencia como un valor numerico'));
+			}
 			$this->form_validation->set_rules('ckInventariable', 'Inventariable', 'required', array('required'=>'Define si el producto será inventariable o no'));
-			$this->form_validation->set_rules('inputCodigo', 'Código', 'required', array('required'=>'Ingresa el código de barras del producto'));
 			$this->form_validation->set_rules('inputDescripcion', 'Descripción', 'required', array('required'=>'Ingresa la descripción del producto'));
 			$this->form_validation->set_rules('selectMarca', 'Marca', 'required', array('required'=>'Selecciona la marca del producto'));
 			$this->form_validation->set_rules('selectDepartamento', 'Departamento', 'required', array('required'=>'Selecciona a que departamento pertenecerá el producto'));
-			$this->form_validation->set_rules('inputPrecio', 'Precio', 'required', array('required'=>'Ingresa el precio de venta del producto'));
-			$this->form_validation->set_rules('inputCosto', 'Costo', 'required', array('required'=>'Ingresa el costo de compra del producto'));
-			$this->form_validation->set_rules('inputExistencia', 'Existencia', 'required', array('required'=>'Ingresa la existencia inicial del producto'));
+			$this->form_validation->set_rules('inputPrecio', 'Precio', 'required|numeric', array('required'=>'Ingresa el precio de venta del producto', 'numeric'=>'Ingrese el precio como un valor numerico'));
+			$this->form_validation->set_rules('inputCosto', 'Costo', 'required|numeric', array('required'=>'Ingresa el costo de compra del producto', 'numeric'=>'Ingrese el costo como un valor numerico'));
 			$this->form_validation->set_rules('selectMetrica', 'Métrica', 'required', array('required'=>'Selecciona la unidad de medida del producto'));
 
 			if ($this->form_validation->run() === false) exit(json_encode(array('bandera'=>false, 'msj'=>'Las validaciones del formulario no se completaron, atiende:<br>' . validation_errors())));
@@ -186,9 +188,46 @@ class Inventarios extends Base_Controller {
 
 		}
 
+		public function GuardarIngreso() {
+			$this->load->model('in_cat_productos');
+			$this->load->model('in_stock');
+			$this->load->model('in_kardex_movimientos');
+			$productos = $this->input->post('productos');
+
+			$this->db->trans_start();
+				foreach($productos as $key => $item) {
+					$where = array('cve_cat_producto'=>$item['cve_cat_producto']);
+					$producto = $this->in_cat_productos->obtener($where, 'precio_unitario, costo_unitario');
+					$dstock = array(
+						'cve_cat_producto' => $item['cve_cat_producto'],
+						'existencia' => $item['cantidad'],
+						'precio_unitario' => $producto['precio_unitario'],
+						'costo_unitario' => $producto['costo_unitario'],
+						'lote' => date('MdDy') . str_pad($item['cve_cat_producto']*1, 6, "0", STR_PAD_LEFT)
+					);
+					$dkardex = array(
+						'cve_cat_producto' => $item['cve_cat_producto'],
+						'tipo_movimiento' => 'E',
+						'cve_movimiento' => $item['_motivo'],
+						'cantidad' => $item['cantidad'],
+						'lote' => date('MdDy') . str_pad($item['cve_cat_producto']*1, 6, "0", STR_PAD_LEFT)
+					);
+					$this->in_stock->alta($dstock);
+					$this->in_kardex_movimientos->alta($dkardex);
+				}
+			$this->db->trans_complete();
+
+			$this->db->trans_status() == false ? exit(json_encode(array('bandera'=>false, 'msj'=>'Se presento un error al ingresar los productos'))) : exit(json_encode(array('bandera'=>true, 'msj'=>'Los ingresos se realizaron con éxito')));
+
+		}
+
 	# Autocompletes
 		public function buscarProducto() {
 			$this->load->model('in_cat_productos');
 			exit(json_encode($this->in_cat_productos->buscarProducto($this->input->get('term'))));
+		}
+		public function BuscarCodigo() {
+			$this->load->model('in_cat_productos');
+			exit(json_encode($this->in_cat_productos->buscarCodigo($this->input->post('codigo_de_barras'))));
 		}
 }

@@ -28,6 +28,8 @@ $(document).ready(function () {
 		$producto = ajax('ObtenerProducto', { cve_cat_producto: $.cookie('cve_cat_producto') });
 		setearProducto($producto);
 		$.removeCookie("cve_cat_producto", { path: '/LaTiendita/Inventarios' });
+		$('#inputExistencia').prop('readonly', true).val('').prop('placeholder', 'Solo altas');
+		$('#inputCodigo').prop('readonly', true);
 	}
 
 	// Mandamos llamar la funcion para guardar la informacion del producto
@@ -81,8 +83,9 @@ function crudProducto() {
 				}).then(function (isConfirm) {
 					$("#formProducto")[0].reset();
 					$('#inputCveCatProducto').val('');
-					$.removeCookie("cve_cat_producto", { path: '/LaTiendita/Inventarios'});
+					$.removeCookie("cve_cat_producto", { path: '/LaTiendita/Inventarios' });
 					swal.close();
+					$('#inputCodigo').focus();
 				}, function () {
 					window.location.href = 'Productos';
 				});
