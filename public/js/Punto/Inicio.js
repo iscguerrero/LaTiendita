@@ -141,7 +141,7 @@ function actualizarTotales() {
 	$total = 0;
 	productos = $('#tablaProductos').bootstrapTable('getData');
 	$.each(productos, function (i, item) {
-		$total = $total + item.total;
+		$total = parseFloat($total) + parseFloat(item.total);
 	});
 	$('#total').html(formato_numero($total, 2, '.', ','))
 	$('#codigo').val('').focus();
