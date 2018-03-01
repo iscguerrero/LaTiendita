@@ -8,6 +8,11 @@ class in_stock extends Base_Model {
 		$this->return_type = 'array';
 	}
 
+	# Obtener un registro
+	public function obtener($where, $campos) {
+		return $this->get($where, $campos);
+	}
+
 	# Retornar los registros de la tabla
 	public function listar($wheres, $campos) {
 		return $this->filter($wheres, $campos);
@@ -16,6 +21,17 @@ class in_stock extends Base_Model {
 	# Nuevo registro para la tabla
 	public function alta($data) {
 		return $this->save($data);
+	}
+
+	# Obtener las existencias por lote de un producto
+	public function lotes($cve_cat_producto) {
+		$this->db->select("id, existencia, precio_unitario, costo_unitario, lote")
+		->from('in_stock')
+		->where('cve_cat_producto', $cve_cat_producto)
+		->where('existencia >', 0)
+		->order_by('id', 'ASC');
+		$query = $this->db->get();
+		return $query->result();
 	}
 
 }

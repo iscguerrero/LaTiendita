@@ -187,37 +187,107 @@ class Inventarios extends Base_Controller {
 			$this->db->trans_status() == false ? exit(json_encode(array('bandera'=>false, 'msj'=>'No se registraron cambios'))) : exit(json_encode(array('bandera'=>true, 'msj'=>'Registro agregado con éxito, ¿Deseas agregar un nuevo producto o ir al catálogo?')));
 
 		}
-
 		public function GuardarIngreso() {
 			$this->load->model('in_cat_productos');
 			$this->load->model('in_stock');
 			$this->load->model('in_kardex_movimientos');
 			$productos = $this->input->post('productos');
 
-			$this->db->trans_start();
-				foreach($productos as $key => $item) {
-					$where = array('cve_cat_producto'=>$item['cve_cat_producto']);
-					$producto = $this->in_cat_productos->obtener($where, 'precio_unitario, costo_unitario');
+			$this->db->trans_begin();
+			foreach($productos as $key => $item) {
+				$where = array('cve_cat_producto'=>$item['cve_cat_producto']);
+				$producto = $this->in_cat_productos->obtener($where, 'precio_unitario, costo_unitario');
+				$dstock = array(
+					'cve_cat_producto' => $item['cve_cat_producto'],
+					'existencia' => $item['cantidad'],
+					'precio_unitario' => $producto['precio_unitario'],
+					'costo_unitario' => $producto['costo_unitario'],
+					'lote' => date('MdDy') . str_pad($item['cve_cat_producto']*1, 6, "0", STR_PAD_LEFT)
+				);
+				$dkardex = array(
+					'cve_cat_producto' => $item['cve_cat_producto'],
+					'tipo_movimiento' => 'E',
+					'cve_movimiento' => $item['_motivo'],
+					'cantidad' => $item['cantidad'],
+					'lote' => date('MdDy') . str_pad($item['cve_cat_producto']*1, 6, "0", STR_PAD_LEFT),
+					'precio_unitario' => $producto['precio_unitario'],
+					'costo_unitario' => $producto['costo_unitario']
+				);
+				$this->in_stock->alta($dstock);
+				$this->in_kardex_movimientos->alta($dkardex);
+			}
+
+			if ($this->db->trans_status() === FALSE) {
+				$this->db->trans_rollback();
+				exit(json_encode(array('bandera'=>false, 'msj'=>'Se presento un error al ingresar los productos')));
+			} else {
+				$this->db->trans_commit();
+				exit(json_encode(array('bandera'=>true, 'msj'=>'Los ingresos se realizaron con éxito')));
+			}
+
+		}
+		public function GuardarEgreso() {
+			$this->load->model('in_cat_productos');
+			$this->load->model('in_stock');
+			$this->load->model('in_kardex_movimientos');
+			$productos = $this->input->post('productos');
+
+			# Comprobamos que haya más existencia de la que se quiere dar de baja
+			foreach($productos as $key => $item) {
+				$where = array('cve_cat_producto'=>$item['cve_cat_producto']);
+				$producto = $this->in_stock->obtener($where, 'sum(existencia) as existencia');
+				$existencia = $producto['existencia'];
+				if($item['cantidad'] > $existencia) {
+					exit(json_encode(array('bandera'=>false, 'msj'=>'La cantidad(' . $item['cantidad'] . ') de ' . $item['descripcion'] . ' que quieres egresar es mayor a la existencia(' . $existencia . ') en inventario')));
+				}
+			}
+
+			$this->db->trans_begin();
+			foreach($productos as $key => $item) {
+				$lotes = $this->in_stock->lotes($item['cve_cat_producto']);
+				foreach($lotes as $lote) {
+					$salida = 0;
+					while($productos[$key]['cantidad'] > 0 && $lote->existencia > 0) {
+						if($lote->existencia < $productos[$key]['cantidad']){
+							$salida = $lote->existencia;
+							$productos[$key]['cantidad'] = $productos[$key]['cantidad'] - $lote->existencia;
+							$lote->existencia = 0;
+						} else if($lote->existencia == $productos[$key]['cantidad']) {
+							$salida = $lote->existencia;
+							$productos[$key]['cantidad'] = 0;
+							$lote->existencia = 0;
+						} else if($lote->existencia > $productos[$key]['cantidad']) {
+							$salida = $productos[$key]['cantidad'];
+							$lote->existencia = $lote->existencia - $productos[$key]['cantidad'];
+							$productos[$key]['cantidad'] = 0;
+						}
+					}
 					$dstock = array(
-						'cve_cat_producto' => $item['cve_cat_producto'],
-						'existencia' => $item['cantidad'],
-						'precio_unitario' => $producto['precio_unitario'],
-						'costo_unitario' => $producto['costo_unitario'],
-						'lote' => date('MdDy') . str_pad($item['cve_cat_producto']*1, 6, "0", STR_PAD_LEFT)
+						'id' => $lote->id,
+						'existencia' => $lote->existencia
 					);
 					$dkardex = array(
 						'cve_cat_producto' => $item['cve_cat_producto'],
-						'tipo_movimiento' => 'E',
+						'tipo_movimiento' => 'S',
 						'cve_movimiento' => $item['_motivo'],
-						'cantidad' => $item['cantidad'],
-						'lote' => date('MdDy') . str_pad($item['cve_cat_producto']*1, 6, "0", STR_PAD_LEFT)
+						'cantidad' => $salida,
+						'lote' => $lote->lote,
+						'precio_unitario' => $lote->precio_unitario,
+						'costo_unitario' => $lote->costo_unitario
 					);
 					$this->in_stock->alta($dstock);
 					$this->in_kardex_movimientos->alta($dkardex);
+					if($productos[$key]['cantidad'] == 0) break;
 				}
-			$this->db->trans_complete();
+			}
 
-			$this->db->trans_status() == false ? exit(json_encode(array('bandera'=>false, 'msj'=>'Se presento un error al ingresar los productos'))) : exit(json_encode(array('bandera'=>true, 'msj'=>'Los ingresos se realizaron con éxito')));
+			if ($this->db->trans_status() === FALSE) {
+				$this->db->trans_rollback();
+				exit(json_encode(array('bandera'=>false, 'msj'=>'Se presento un error al ingresar los productos')));
+			} else {
+				$this->db->trans_commit();
+				exit(json_encode(array('bandera'=>true, 'msj'=>'Los ingresos se realizaron con éxito')));
+			}
 
 		}
 

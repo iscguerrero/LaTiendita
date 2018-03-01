@@ -5,47 +5,55 @@
 <?php $this->start('vista')?>
 
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-xs-12">
 		<div class="card card-plain">
-			<div class="card-header">
-				<h4 class="card-title">Egresar de Productos Existentes</h4>
-			</div>
 			<div class="card-content">
 				<div class="row">
-					<div class="col-lg-8">
-						<div class="row">
-							<div class="col-xs-6">
-								<div class="form-group">
-									<label for="">Producto</label>
-									<input type="text" placeholder="Buscar por código o nombre de producto" class="form-control">
-								</div>
-								<div class="form-group">
-									<label for="">Existencia</label>
-									<input type="text" class="form-control">
-								</div>
-								<div class="form-group">
-									<label for="">Motivo</label>
-									<select class="form-control" name="" id="">
-										<option value="">Devolución a Proveedor</option>
-										<option value="">Ajuste por Inventario</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-xs-6">
-								<div class="form-group">
-									<label for="">Marca</label>
-									<input type="text" class="form-control">
-								</div>
-								<div class="form-group">
-									<label for="">Cantidad a Egresar</label>
-									<input type="text" class="form-control">
-								</div>
-								<div class="text-right">
-									<button type="button" class="btn btn-cancel"><i class="ti ti-close"></i> Cancelar</button>
-									<button type="button" class="btn btn-primary"><i class="ti ti-check"></i> Agregar a Lista</button>
-								</div>
-							</div>
+					<input type="hidden" name="cve_cat_producto" id="cve_cat_producto">
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-5">
+						<div class="form-group">
+							<label for="codigo">Código de Barras</label>
+							<input type="text" placeholder="Leer código de barras" class="form-control" name="codigo" id="codigo" autofocus>
 						</div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-7">
+						<div class="form-group">
+							<label for="producto">Producto</label>
+							<input type="text" placeholder="o buscar por nombre" class="form-control" name="producto" id="producto">
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+						<div class="form-group">
+							<label for="departamento">Departamento</label>
+							<input type="text" class="form-control" name="departamento" id="departamento" readonly>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+						<div class="form-group">
+							<label for="marca">Marca</label>
+							<input type="text" class="form-control" name="marca" id="marca" readonly >
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+						<div class="form-group">
+							<label for="motivo">Motivo</label>
+							<select name="motivo" id="motivo" class="form-control"></select>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+						<div class="form-group">
+							<label for="cantidad">Cantidad a Egresar</label>
+							<input type="number" class="form-control text-right" name="cantidad" id="cantidad" >
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 col-xs-6">
+						<button class="btn btn-primary" id="cargar"><i class="fa fa-floppy-o"></i> Cargar egresos al inventario</button>
+					</div>
+					<div class="col-xs-6 text-right">
+						<button type="button" class="btn bttn-default" id="cancelar"><i class="fa fa-times-circle"></i> Cancelar</button>
+						<button type="button" class="btn btn-primary" id="agregar"><i class="fa fa-thumbs-up"></i> Añadir</button>
 					</div>
 				</div>
 			</div>
@@ -54,67 +62,20 @@
 </div>
 
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-xs-12">
 		<div class="card card-plain">
 			<div class="card-header">
-				<h4 class="card-title">Lista de Productos a Egresar</h4>
+				<h4 class="card-title">Lista de Egresos a Productos</h4>
 			</div>
 			<div class="table-responsive">
-				<table class="table table-shopping table-condensed">
-					<thead>
-						<tr>
-							<th class="text-center">Código</th>
-							<th class="text-left">Nombre del Producto</th>
-							<th class="text-left">Marca</th>
-							<th class="text-right">Ingresados</th>
-							<th class="text-center">Motivo</th>
-							<th class="text-center">Opciones</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>
-								1700025568557
-							</td>
-							<td>
-								<strong>Coca-Cola 600ml</strong>
-							</td>
-							<td>Coca-Cola</td>
-							<td>
-								52 <small>pz</small>
-							</td>
-							<td>
-								Devolución a proveedor
-							</td>
-							<td>
-								Cancelar
-							</td>
-						</tr>
-						<tr>
-							<td>
-								1700024826557
-							</td>
-							<td>
-								<strong>Coca-Cola 2lt</strong>
-							</td>
-							<td>Coca-Cola</td>
-							<td>
-								36 <small>pz</small>
-							</td>
-							<td>
-								Devolución a proveedor
-							</td>
-							<td>
-								Cancelar
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<table id="tablaEgresos"></table>
 			</div>
 		</div>
 	</div>
 </div>
 <?php $this->stop()?>
 <?php $this->start('js')?>
-
+	<script src="<?php echo base_url('assets/js/bootstrap-table.js')?>"></script>
+	<script src="<?php echo base_url('assets/js/locale/bootstrap-table-es-MX.min.js')?>"></script>
+	<script src="<?php echo base_url('public/js/Inventarios/EgresarProducto.js') ?>"></script>
 <?php $this->stop()?>
