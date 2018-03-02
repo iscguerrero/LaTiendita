@@ -3,20 +3,13 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 require_once APPPATH . "/third_party/fpdf/rounded_rect_class.php";
 
-class Pdf extends rounded_rect
-{
-	function Header()
-	{
-			//$this->Image(base_url('public/images/trilogiq.jpeg'), 15, 15, 32.3, 15.6);
-			//$this->Image(base_url('public/images/leantek.jpg'), 179, 15, 34.9, 14.4);
-	}
-	function Footer()
-	{
-		$this->setY(-17);
+class Pdf extends rounded_rect {
+	function Header() {
 		$this->SetFont('Courier', '', 8);
-		$this->MultiCell(0, 3, utf8_decode("TRILOGIQ MÉXICO SA DE CV TRI051027UQ1"), 0, 'C', false);
-		$this->MultiCell(0, 3, utf8_decode("Nezahualcoyotl #40, col. Cumbres de Conín, El Marques, Querétaro, C.P. 76246 México "), 0, 'C', false);
-		$this->MultiCell(0, 3, utf8_decode("Lugar de Expedición QUERETARO"), 0, 'C', false);
+		$this->MultiCell(0, 3, utf8_decode("MiniSuper Vizarrón"), 0, 'C', false);
+		$this->MultiCell(0, 3, utf8_decode('Impresión ') . date('d-M-Y'), 0, 'C', false);
+	}
+	function Footer() {
 	}
 
 	var $widths;
@@ -40,7 +33,7 @@ class Pdf extends rounded_rect
 		$nb = 0;
 		for ($i = 0; $i < count($data); $i++)
 			$nb = max($nb, $this->NbLines($this->widths[$i], $data[$i]));
-		$h = 5 * $nb;
+		$h = 3 * $nb;
 			//Issue a page break first if needed
 		$this->CheckPageBreak($h);
 			//Draw the cells of the row
@@ -53,7 +46,7 @@ class Pdf extends rounded_rect
 					//Draw the border
 				//$this->Rect($x,$y,$w,$h);
 					//Print the text
-			$this->MultiCell($w, 5, $data[$i], 0, $a);
+			$this->MultiCell($w, 3, $data[$i], 0, $a);
 					//Put the position to the right of the cell
 			$this->SetXY($x + $w, $y);
 		}
@@ -200,7 +193,8 @@ class Pdf extends rounded_rect
 				$this->Rect($x + $i * $w, $y, $w, $h, 'F');
 		}
     //Print text uder barcode
-		$this->SetFont('Arial', '', 12);
+		#$this->SetFont('Arial', '', 12);
+		$this->SetFont('Courier', '', 10);
 		$this->Text($x, $y + $h + 11 / $this->k, substr($barcode, -$len));
 	}
 

@@ -103,9 +103,6 @@ class Login extends CI_Controller{
 				'contrasenia' => $this->input->get('contrasenia'),
 				'cve_perfil' => $this->input->get('cve_perfil'),
 				'nombre' => $this->input->get('nombre'),
-				'correo' => $this->input->get('correo'),
-				'created_at' => date('Y-m-j H:i:s'),
-				'updated_at' => date('Y-m-j H:i:s'),
 				'estatus' => 'A'
 			);
 			if ($this->gl_cat_usuarios->alta($data)) {

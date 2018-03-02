@@ -218,7 +218,7 @@ function finalizarVenta() {
 				swal({
 					type: 'question',
 					title: "Éxito!",
-					html: 'La venta se registro con éxito ¿Deseas imprimir el ticket de venta?',
+					html: 'La venta se registro con éxito! </br> ' + data.msj +  '</br> ¿Deseas imprimir el ticket de venta?',
 					buttonsStyling: true,
 					showCancelButton: true,
 					confirmButtonText: 'Si',
@@ -229,9 +229,9 @@ function finalizarVenta() {
 					cancelButtonClass: "btn btn-default btn-fill"
 				}).then(function (isConfirm) {
 					limpiarPunto();
+					window.open('Ticket/' + data.folio);
 				}, function () {
 					limpiarPunto();
-					swal.close();
 				});
 			}
 		}

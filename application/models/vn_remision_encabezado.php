@@ -8,9 +8,13 @@ class vn_remision_encabezado extends Base_Model {
 		$this->return_type = 'array';
 	}
 
+	# Obtener un registro
+	public function obtener($where, $campos) {
+		return $this->get($where, $campos);
+	}
+
 	#Metodo para obtener el nuevo folio de la precotizacion
-	public function folio()
-	{
+	public function folio() {
 		return $this->count();
 	}
 
