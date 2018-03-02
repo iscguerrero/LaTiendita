@@ -1,67 +1,71 @@
 <?php $this->layout('Layout', ['title'=>'mSV::Detalle del Inventario', 'sitepage'=>'Detalle del Inventario'])?>
 <?php $this->start('css')?>
-
+	<style>
+		.card .numbers {
+    	font-size: 1.2em;
+		}
+	</style>
 <?php $this->stop()?>
 <?php $this->start('vista')?>
 <div class="row">
-	<div class="col-lg-3">
+	<div class="col-xs-offset-0 col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<div class="card">
 			<div class="card-content">
 				<div class="row">
-					<div class="col-xs-4">
+					<div class="col-xs-5">
 						<div class="icon-big icon-success text-center">
 							<i class="ti-money"></i>
 						</div>
 					</div>
-					<div class="col-xs-8">
+					<div class="col-xs-7">
 						<div class="numbers">
-							<p>Valor del Inventario</p>
-							$49,824.50
+							<p>Valor</p>
+							<font id="valor"></font>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-3">
+	<div class="col-xs-offset-0 col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<div class="card">
 			<div class="card-content">
 				<div class="row">
-					<div class="col-xs-4">
+					<div class="col-xs-5">
 						<div class="icon-big icon-warning text-center">
 							<i class="ti-money"></i>
 						</div>
 					</div>
-					<div class="col-xs-8">
+					<div class="col-xs-7">
 						<div class="numbers">
-							<p>Costo del Inventario</p>
-							$36,124.00
+							<p>Costo</p>
+							<font id="costo"></font>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-3">
+	<div class="col-xs-offset-0 col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<div class="card">
 			<div class="card-content">
 				<div class="row">
-					<div class="col-xs-4">
+					<div class="col-xs-5">
 						<div class="icon-big icon-info text-center">
 							<i class="ti-wallet"></i>
 						</div>
 					</div>
-					<div class="col-xs-8">
+					<div class="col-xs-7">
 						<div class="numbers">
-							<p>Utilidad(No gastos)</p>
-							$19,589.00
+							<p>Utilidad</p>
+							<font id="utilidad"></font>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-3">
+	<div class="col-xs-offset-0 col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<div class="card">
 			<div class="card-content">
 				<div class="row">
@@ -72,8 +76,8 @@
 					</div>
 					<div class="col-xs-8">
 						<div class="numbers">
-							<p>Productos | Existencia</p>
-							123|1,254
+							<p>Existencia</p>
+							<font id="existencia"></font>
 						</div>
 					</div>
 				</div>
@@ -89,8 +93,8 @@
 				<h4 class="card-title">Productos</h4>
 				<p class="category">Detalle de la existencia del Inventario</p>
 			</div>
-			<div class="card-content table-responsive table-full-width">
-				<table class="table table-striped">
+			<div class="table-responsive">
+				<table id="tablaProductos">
 					<thead>
 						<th>Producto</th>
 						<th>Marca</th>
@@ -99,32 +103,6 @@
 						<th>Valor</th>
 						<th>Utilidad</th>
 					</thead>
-					<tbody>
-						<tr>
-							<td>M&Ms</td>
-							<td>Mars</td>
-							<td>12 piezas</td>
-							<td>$72.00</td>
-							<td>$86.00</td>
-							<td>$14.00</td>
-						</tr>
-						<tr>
-							<td>M&Ms</td>
-							<td>Mars</td>
-							<td>12 piezas</td>
-							<td>$72.00</td>
-							<td>$86.00</td>
-							<td>$14.00</td>
-						</tr>
-						<tr>
-							<td>M&Ms</td>
-							<td>Mars</td>
-							<td>12 piezas</td>
-							<td>$72.00</td>
-							<td>$86.00</td>
-							<td>$14.00</td>
-						</tr>
-					</tbody>
 				</table>
 			</div>
 	</div>
@@ -132,4 +110,7 @@
 
 <?php $this->stop()?>
 <?php $this->start('js')?>
+	<script src="<?php echo base_url('assets/js/bootstrap-table.js') ?>"></script>
+	<script src="<?php echo base_url('assets/js/locale/bootstrap-table-es-MX.min.js') ?>"></script>
+	<script src="<?php echo base_url('public/js/Inventarios/DetalleInventario.js') ?>"></script>
 <?php $this->stop()?>

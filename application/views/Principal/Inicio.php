@@ -9,7 +9,7 @@
 <?php $this->start('vista')?>
 
 <div class="row">
-	<div class="col-lg-3">
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "#" id="aAbrirCaja">
 			<div class="card">
 				<div class="card-content">
@@ -28,7 +28,7 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-lg-3">
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "#" id="aCerrarCaja">
 			<div class="card">
 				<div class="card-content">
@@ -47,7 +47,7 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-lg-3">
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/ResumenCaja') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -66,7 +66,7 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-lg-3">
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/HistoriaCaja') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -85,9 +85,7 @@
 			</div>
 		</a>
 	</div>
-</div>
-<div class="row">
-	<div class="col-lg-3">
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "#" id="aNuevoGasto">
 			<div class="card">
 				<div class="card-content">
@@ -106,7 +104,7 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-lg-3">
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/Devoluciones') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -125,7 +123,7 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-lg-3">
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/ResumenFinanciero') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -144,7 +142,7 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-lg-3">
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/Proveedores') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -177,13 +175,13 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Importe</label>
-						<input type="importe" placeholder="Ingrese importe de apertura de caja" class="form-control text-right">
+						<input type="text" class="form-control text-right" name="apertura" id="apertura" placeholder="Ingrese importe de apertura de caja">
 					</div>
 				</div>
 				<div class="modal-footer">
 					<div class="row">
 						<div class="col-xs-12 pull-right">
-							<button type="button" class="btn btn-default"><i class="ti ti-close"></i> Cancelar</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="ti ti-close"></i> Cancelar</button>
 							<button type="submit" class="btn btn-primary"><i class="ti ti-check"></i> Confirmar</button>
 						</div>
 					</div>
@@ -205,13 +203,13 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Importe</label>
-						<input type="text" placeholder="Ingrese importe de cierre de caja" class="form-control text-right">
+						<input type="text" class="form-control text-right" name="cierre" id="cierre" placeholder="Ingrese importe de cierre de caja" >
 					</div>
 				</div>
 				<div class="modal-footer">
 					<div class="row">
 						<div class="col-xs-12 pull-right">
-							<button type="button" class="btn btn-default"><i class="ti ti-close"></i> Cancelar</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="ti ti-close"></i> Cancelar</button>
 							<button type="submit" class="btn btn-primary"><i class="ti ti-check"></i> Confirmar</button>
 						</div>
 					</div>

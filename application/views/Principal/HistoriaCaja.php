@@ -6,144 +6,44 @@
 <div class="row">
 	<div class="col-xs-12">
 		<div class="card">
-			<div class="card-content">
-				<div class="toolbar">
-				</div>
-				<table id="tHistoriaCaja" class="table">
-					<thead>
-						<th data-field="empleado">Empleado</th>
-						<th data-field="salary" data-align="center">Fecha de Apertura</th>
-						<th data-field="country" data-align="center">Hora de Apertura</th>
-						<th data-field="city" data-align="right">Monto de Apertura</th>
-						<th data-field="salary" data-align="center">Fecha de Cierre</th>
-						<th data-field="country" data-align="center">Hora de Cierre</th>
-						<th data-field="city" data-align="right">Monto de Cierre</th>
-					</thead>
-						<tbody>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-							<tr>
-								<td>Cajero</td>
-								<td>04-Enero-2018</td>
-								<td>08:02 am</td>
-								<td>$513.50</td>
-								<td>04-Enero-2018</td>
-								<td>07:59 pm</td>
-								<td>$8456.50</td>
-							</tr>
-						</tbody>
-				</table>
+			<div class="table-responsive">
+				<table id="tablaCaja" class="table-condensed"></table>
 			</div>
 		</div>
 	</div>
 </div>
 
+<!-- Modal para mostrar el formulario de filtros del reporte -->
+<div class="modal fade" tabindex="-1" role="dialog" id="modalCaja">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Periodo</h4>
+			</div>
+			<form action="#" id="formCaja">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="form-group">
+								<label for="inicio">Inicio</label>
+								<input type="text" class="form-control datepicker" name="inicio" id="inicio" required >
+							</div>
+							<div class="form-group">
+								<label for="fin">Fin</label>
+								<input type="text" class="form-control datepicker" name="fin" id="fin" required >
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times-circle"></i> Cancelar</button>
+					<button type="submit" class="btn btn-primary"><i class="fa fa-thumbs-up"></i> Generar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
 <?php $this->stop()?>
 <?php $this->start('js')?>

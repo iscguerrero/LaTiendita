@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/demo.css') ?>"/>
 	<?php echo $this->section('css')?>
 </head>
-<body>
+<body class="sidebar-mini">
 	<div class="wrapper">
 		<div class="sidebar" data-background-color="brown" data-active-color="danger">
 			<div class="logo">
@@ -34,7 +34,7 @@
 					<li>
 						<a href="<?php echo base_url('Inventarios/IngresarProducto') ?>">
 							<i class="ti-import"></i>
-							<p>Inventario</p>
+							<p>Ingresar Producto</p>
 						</a>
 					</li>
 				</ul>

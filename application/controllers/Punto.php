@@ -1,7 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Punto extends Base_Controller
-{
+class Punto extends Base_Controller {
 	function __construct() {
 		parent::__construct();
 	}
@@ -141,7 +140,7 @@ class Punto extends Base_Controller
 			$pdf->SetWidths(array(8, 23, 9, 12));
 			$pdf->SetAligns(array('R', 'L', 'R', 'R'));
 			foreach ($partidas as $key => $partida) {
-				$pdf->Row(array(number_format($partida->piezas, 2), $partida->descripcion, number_format($partida->precio_unitario, 1), number_format($partida->total, 1)));
+				$pdf->Row(array(number_format($partida->piezas, 2), utf8_decode($partida->descripcion), number_format($partida->precio_unitario, 1), number_format($partida->total, 1)));
 			}
 
 		# Impresion de los totales

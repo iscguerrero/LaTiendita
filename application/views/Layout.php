@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/demo.css') ?>"/>
 	<?php echo $this->section('css')?>
 </head>
-<body>
+<body class="sidebar-mini">
 	<div class="wrapper">
 		<div class="sidebar" data-background-color="brown" data-active-color="danger">
 			<div class="logo">
@@ -111,12 +111,15 @@
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.1.1.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-ui.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/perfect-scrollbar.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/moment.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/locale-es.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/es6-promise-auto.min.js') ?>"></script>
 	<script type="text/javascript"src="<?php echo base_url('assets/js/bootstrap-switch-tags.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-notify.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/sweetalert2.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-selectpicker.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-datetimepicker.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.cookie.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/paper-dashboard.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('public/js/master.js') ?>"></script>
