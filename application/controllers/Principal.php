@@ -93,4 +93,92 @@ class Principal extends Base_Controller {
 		$this->vn_gastos->alta($data) == false ? exit(json_encode(array('bandera' => false, 'msj' => 'Se presento un error al registrar el gasto'))) : exit(json_encode(array('bandera' => true, 'msj' => 'El gasto se registro con éxito, ¿Deseas ir al punto de venta?')));
 	}
 
+	public function ObtenerRemision() {
+		$this->load->model('vn_remision_encabezado');
+		exit(json_encode($this->vn_remision_encabezado->ObtenerRemision($this->input->post('codigo_de_barras'))));
+	}
+
+	public function EjecutarDevolucion() {
+		$this->load->model('in_cat_productos');
+		$this->load->model('in_stock');
+		$this->load->model('in_kardex_movimientos');
+		$this->load->model('vn_remision_encabezado');
+		$this->load->model('vn_remision_partidas');
+		$this->load->model('vn_devolucion_encabezado');
+		$this->load->model('vn_devolucion_partidas');
+		$productos = $this->input->post('productos');
+		$devuelto = $this->input->post('devuelto');
+
+		# Comprobamos que no se devuelvan mas productos de los vendidos
+		foreach ($productos as $key => $item) {
+			if ($item['devueltas'] > $item['piezas']) {
+				exit(json_encode(array('bandera' => false, 'msj' => 'La cantidad(' . number_format($item['devueltas'], 2) . ') de ' . $item['producto'] . ' que quieres devolver es mayor a la cantidad vendida(' . $item['piezas'] . ')')));
+			}
+		}
+
+		$this->db->trans_begin();
+
+		$eencabezado = array(
+			'folio' => $productos[0]['folio'],
+			'estatus' => 'P'
+		);
+		$folio = $this->vn_remision_encabezado->alta($eencabezado);
+
+		$dencabezado = array(
+			'folio_remision' => $productos[0]['folio']
+		);
+		$dfolio = $this->vn_devolucion_encabezado->alta($dencabezado);
+		$dtotal = 0;
+		foreach ($productos as $key => $item) {
+			$dtotal += $item['devuelto'];
+			if($item['devueltas'] > 0) {
+				$dstock = array(
+					'cve_cat_producto' => $item['cve_cat_producto'],
+					'existencia' => $item['devueltas'],
+					'precio_unitario' => $item['precio_unitario'],
+					'costo_unitario' => $item['costo_unitario'],
+					'lote' => date('MdDy') . str_pad($item['cve_cat_producto'] * 1, 6, "0", STR_PAD_LEFT)
+				);
+				$this->in_stock->alta($dstock);
+				$dkardex = array(
+					'cve_cat_producto' => $item['cve_cat_producto'],
+					'tipo_movimiento' => 'E',
+					'cve_movimiento' => 'DV',
+					'cantidad' => $item['devueltas'],
+					'lote' => date('MdDy') . str_pad($item['cve_cat_producto'] * 1, 6, "0", STR_PAD_LEFT),
+					'precio_unitario' => $item['precio_unitario'],
+					'costo_unitario' => $item['costo_unitario'],
+				);
+				$this->in_kardex_movimientos->alta($dkardex);
+				$dpartida = array(
+					'id' => $item['id'],
+					'piezas_devueltas' => $item['devueltas'],
+					'estatus' => 'P'
+				);
+				$this->vn_remision_partidas->alta($dpartida);
+				$dpartida = array(
+					'folio' => $dfolio,
+					'cve_cat_producto' => $item['cve_cat_producto'],
+					'piezas' => $item['devueltas']
+				);
+				$this->vn_devolucion_partidas->alta($dpartida);
+			}
+		}
+
+		$dencabezado = array(
+			'folio' => $dfolio,
+			'total' => $dtotal
+		);
+		$this->vn_devolucion_encabezado->alta($dencabezado);
+
+		if ($this->db->trans_status() === false) {
+			$this->db->trans_rollback();
+			exit(json_encode(array('bandera' => false, 'msj' => 'Se presento un error al intentar registrar la devolución')));
+		} else {
+			$this->db->trans_commit();
+			exit(json_encode(array('bandera' => true, 'msj' => 'El cambio para el cliente es de ' . number_format($devuelto, 2), 'folio' => $folio)));
+		}
+
+	}
+
 }

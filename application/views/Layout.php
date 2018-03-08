@@ -25,12 +25,12 @@
 			</div>
 			<div class="sidebar-wrapper">
 				<ul class="nav">
-					<!--li>
-						<a href="<?php #echo base_url('Escritorio/Inicio') ?>">
+					<li>
+						<a href="<?php echo base_url('Escritorio/Inicio') ?>">
 							<i class="ti-panel"></i>
 							<p>Escritorio</p>
 						</a>
-					</li -->
+					</li>
 					<li>
 						<a href="<?php echo base_url('Punto/Inicio') ?>">
 							<i class="ti-shopping-cart-full"></i>
@@ -49,12 +49,12 @@
 							<p>Inventarios</p>
 						</a>
 					</li>
-					<!--li>
-						<a href="<?php #echo base_url('Reportes/Inicio') ?>">
+					<li>
+						<a href="<?php echo base_url('Reportes/Inicio') ?>">
 							<i class="ti-stats-up"></i>
 							<p>Reportes</p>
 						</a>
-					</li-->
+					</li>
 				</ul>
 			</div>
 		</div>

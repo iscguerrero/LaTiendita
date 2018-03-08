@@ -19,7 +19,7 @@ $(document).ready(function () {
 					window.location.replace('./Punto/Inicio');
 					break;
 				case '002':
-					window.location.replace('../Inventarios/Inicio');
+					window.location.replace('../Escritorio/Inicio');
 				default:
 					window.location.replace('');
 					break;

@@ -1,16 +1,11 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class vn_gastos extends Base_Model {
+class vn_devolucion_partidas extends Base_Model {
 	public function  __construct() {
 		parent::__construct();
-		$this->table = 'vn_gastos';
+		$this->table = 'vn_devolucion_partidas';
 		$this->primary_key = 'id';
 		$this->return_type = 'array';
-	}
-
-	# Obtener un registro
-	public function obtener($where, $campos) {
-		return $this->get($where, $campos);
 	}
 
 	# Retornar los registros de la tabla

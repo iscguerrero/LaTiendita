@@ -17,7 +17,7 @@ class Login extends CI_Controller{
 					redirect(base_url('Punto/Inicio'));
 					break;
 				case '002':
-					redirect(base_url('Inventarios/Inicio'));
+					redirect(base_url('Escritorio/Inicio'));
 					break;
 				default:
 					redirect(base_url('Punto/Inicio'));

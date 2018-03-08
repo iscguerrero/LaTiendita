@@ -47,7 +47,7 @@
 			</div>
 		</a>
 	</div>
-	<!--div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/ResumenCaja') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -65,7 +65,7 @@
 				</div>
 			</div>
 		</a>
-	</div-->
+	</div>
 	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/HistoriaCaja') ?>">
 			<div class="card">
@@ -104,7 +104,7 @@
 			</div>
 		</a>
 	</div>
-	<!--div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/Devoluciones') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -122,8 +122,8 @@
 				</div>
 			</div>
 		</a>
-	</div-->
-	<!--div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+	</div>
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/ResumenFinanciero') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -141,8 +141,8 @@
 				</div>
 			</div>
 		</a>
-	</div-->
-	<!--div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+	</div>
+	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/Proveedores') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -161,7 +161,7 @@
 			</div>
 		</a>
 	</div>
-</div-->
+</div>
 
 <!-- Modal para abrir la caja -->
 <div id="modalAbrirCaja" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

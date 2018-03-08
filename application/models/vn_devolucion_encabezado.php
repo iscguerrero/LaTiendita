@@ -1,16 +1,21 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class vn_gastos extends Base_Model {
+class vn_devolucion_encabezado extends Base_Model {
 	public function  __construct() {
 		parent::__construct();
-		$this->table = 'vn_gastos';
-		$this->primary_key = 'id';
+		$this->table = 'vn_devolucion_encabezado';
+		$this->primary_key = 'folio';
 		$this->return_type = 'array';
 	}
 
 	# Obtener un registro
 	public function obtener($where, $campos) {
 		return $this->get($where, $campos);
+	}
+
+	#Metodo para obtener el nuevo folio de la precotizacion
+	public function folio() {
+		return $this->count();
 	}
 
 	# Retornar los registros de la tabla

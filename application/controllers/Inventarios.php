@@ -100,21 +100,6 @@ class Inventarios extends Base_Controller {
 		exit(json_encode($barcode));
 	}
 
-	# Funcion para generar un digito de control de codigo de barras
-	function generarDigitoControl($barcode) {
-		$sum = 0;
-		for ($i = 1; $i <= 11; $i += 2)
-			$sum += 3 * $barcode[$i];
-		for ($i = 0; $i <= 10; $i += 2)
-			$sum += $barcode[$i];
-		$r = $sum % 10;
-		if ($r > 0)
-			$r = 10 - $r;
-		if($r > 10)
-			$r = 4;
-		return $r;
-	}
-
 # Alta / Edicion de nuevas elementos
 	public function CrudMarca() {
 		$this->form_validation->set_rules('inputMarca', 'Descripción', 'required', array('required'=>'La descripción de la marca es necesaria'));

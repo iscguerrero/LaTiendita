@@ -31,4 +31,20 @@ class Base_Controller extends CI_Controller {
 		$date = $fecha[2] . '-' . $meses[$fecha[1]] . '-' . $fecha[0];
 		return $date;
 	}
+
+	# Funcion para generar un digito de control de codigo de barras
+	function generarDigitoControl($barcode) {
+		$sum = 0;
+		for ($i = 1; $i <= 11; $i += 2)
+			$sum += 3 * $barcode[$i];
+		for ($i = 0; $i <= 10; $i += 2)
+			$sum += $barcode[$i];
+		$r = $sum % 10;
+		if ($r > 0)
+			$r = 10 - $r;
+		if ($r > 10 || $r <= 0)
+			$r = 4;
+		return $r;
+	}
+
 }

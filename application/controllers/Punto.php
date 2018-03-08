@@ -36,8 +36,10 @@ class Punto extends Base_Controller {
 		$this->db->trans_begin();
 
 		$codigo = $this->vn_remision_encabezado->folio() == 0 ? 1 : $this->vn_remision_encabezado->folio() + 1;
+		$codigo = '2' . str_pad($codigo, 11, "0", STR_PAD_LEFT);
+		$codigo = $codigo . $this->generarDigitoControl($codigo);
 		$dencabezado = array(
-			'codigo_de_barras' => str_pad($codigo, 12, "0", STR_PAD_LEFT),
+			'codigo_de_barras' => $codigo,
 			'total' => $total,
 			'efectivo' => $efectivo,
 			'estatus' => 'V'
@@ -123,8 +125,7 @@ class Punto extends Base_Controller {
 		$partidas = $this->vn_remision_partidas->partidas($folio);
 
 		$pdf->SetFont('Courier', '', 8);
-		$codigo = str_pad($folio, 12, "0", STR_PAD_LEFT);
-		$pdf->EAN13(10, 12, $codigo);
+		$pdf->EAN13(10, 12, $remision['codigo_de_barras']);
 
 		$pdf->setXY(1, 33);
 
