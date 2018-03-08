@@ -37,6 +37,12 @@ $(document).ready(function () {
 		e.preventDefault();
 		crudProducto();
 	});
+
+	// En caso de que el producto no cuente con un código se genera uno
+	$('#generarCodigo').click(function () {
+		$('#inputCodigo').val(GenerarCodigo());
+	});
+
 });
 
 // Funcion para dar de alta / editar un producto
@@ -92,4 +98,9 @@ function crudProducto() {
 			}
 		}
 	});
+}
+
+// Funcion para generar un nuevo código de barras
+function GenerarCodigo() {
+	return ajax('GenerarCodigo', null);
 }

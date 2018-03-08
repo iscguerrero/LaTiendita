@@ -109,7 +109,7 @@ class Punto extends Base_Controller {
 
 	public function Ticket($folio) {
 		$this->load->library('Pdf');
-		$pdf = new Pdf('P', 'mm', array(54, 215.9));
+		$pdf = new Pdf('P', 'mm', array(54, 210));
 
 		$pdf->SetMargins(1, 1, 5);
 		$pdf->SetAutoPageBreak(true, 15);

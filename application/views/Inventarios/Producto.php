@@ -1,4 +1,4 @@
-<?php $this->layout('Layout', ['title'=>'mSV::Producto', 'sitepage'=>'Producto'])?>
+<?php $this->layout($_SESSION['cve_perfil'] == '001' ? '_Layout' : 'Layout', ['title'=>'mSV::Producto', 'sitepage'=>'Producto'])?>
 <?php $this->start('css')?>
 
 <?php $this->stop()?>
@@ -24,9 +24,12 @@
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-							<div class="form-group">
-								<label for="inputCodigo">Código de Barras</label>
-								<input type="text" class="form-control" name="inputCodigo" id="inputCodigo" autofocus >
+							<label for="inputCodigo">Código de barras</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="inputCodigo" id="inputCodigo" autofocus>
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default" id="generarCodigo" >Generar</button>
+								</span>
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">

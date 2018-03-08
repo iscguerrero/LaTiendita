@@ -1,4 +1,4 @@
-<?php $this->layout('Layout', ['title'=>'mSV::Detalle del Inventario', 'sitepage'=>'Detalle del Inventario'])?>
+<?php $this->layout($_SESSION['cve_perfil'] == '001' ? '_Layout' : 'Layout', ['title'=>'mSV::Detalle del Inventario', 'sitepage'=>'Detalle del Inventario'])?>
 <?php $this->start('css')?>
 	<style>
 		.card .numbers {

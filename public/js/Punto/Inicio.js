@@ -112,6 +112,12 @@ $(document).ready(function () {
 	$('#finalizar').click(function () {
 		finalizarVenta();
 	});
+	$('#efectivo').keyup(function (e) {
+		if (e.keyCode == 13) {
+			event.preventDefault();
+			finalizarVenta();
+		}
+	});
 
 });
 

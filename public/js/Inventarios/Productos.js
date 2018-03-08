@@ -31,7 +31,7 @@ $(document).ready(function () {
 			{ field: 'precio_unitario', title: 'Precio', sortable: true, align: 'right', halign: 'right' },
 			{
 				title: 'Acciones', align: 'right', formatter: function (value, row, index) {
-					return "<button type='button' class='btn btn-warning btn-xs editar' title='Editar información'><i class='fa fa-edit'></i> Editar</button>";
+					return "<button type='button' class='btn btn-warning btn-xs editar' title='Editar información'><i class='fa fa-edit'></i> Editar</button> <button type='button' class='btn btn-info btn-xs imprimir' title='Imprimir tarjeta'><i class='fa fa-file-pdf-o'></i> Imprimir</button>";
 				}
 			}
 		],
@@ -44,6 +44,11 @@ $(document).ready(function () {
 	$('#tablaProductos tbody').on('click', 'button.editar', function () {
 		$.cookie('cve_cat_producto', selectedItem);
 		window.location.href = 'Producto';
+	});
+
+	// Abrir la ventana con el producto seleccionada para impresion
+	$('#tablaProductos tbody').on('click', 'button.imprimir', function () {
+		window.open('Tarjeta/' + selectedItem);
 	});
 
 // Volver a generar el reporte

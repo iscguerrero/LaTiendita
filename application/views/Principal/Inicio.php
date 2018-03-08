@@ -1,4 +1,4 @@
-<?php $this->layout('Layout', ['title'=>'mSV::Principal', 'sitepage'=>'Principal'])?>
+<?php $this->layout($_SESSION['cve_perfil'] == '001' ? '_Layout' : 'Layout', ['title'=>'mSV::Principal', 'sitepage'=>'Principal'])?>
 <?php $this->start('css')?>
 <style>
 	.card .icon-big {
@@ -47,7 +47,7 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+	<!--div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/ResumenCaja') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -65,7 +65,7 @@
 				</div>
 			</div>
 		</a>
-	</div>
+	</div-->
 	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/HistoriaCaja') ?>">
 			<div class="card">
@@ -104,7 +104,7 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+	<!--div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/Devoluciones') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -122,8 +122,8 @@
 				</div>
 			</div>
 		</a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+	</div-->
+	<!--div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/ResumenFinanciero') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -141,8 +141,8 @@
 				</div>
 			</div>
 		</a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+	</div-->
+	<!--div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/Proveedores') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -161,7 +161,7 @@
 			</div>
 		</a>
 	</div>
-</div>
+</div-->
 
 <!-- Modal para abrir la caja -->
 <div id="modalAbrirCaja" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -220,28 +220,32 @@
 </div>
 
 <!-- Modal para cerrar la caja -->
-<div id="modalNuevoGasto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="modalGasto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				<h4 class="modal-title"><i class="ti ti-money"></i> Nuevo Gasto</h4>
 			</div>
-			<form id="formNuevoGasto">
+			<form id="formGasto">
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Importe</label>
-						<input type="text" placeholder="Ingrese importe del gasto" class="form-control text-right">
+						<input type="text" class="form-control text-right" name="importe" id="importe" placeholder="Ingrese importe del gasto">
+					</div>
+					<div class="form-group">
+						<label>Tipo de gasto</label>
+						<select class="form-control" name="tipos" id="tipos"></select>
 					</div>
 					<div class="form-group">
 						<label>Descripción</label>
-						<textarea class="form-control" name="" id="" rows="3" placeholder="Ingrese a detalle el motivo del gasto"></textarea>
+						<textarea class="form-control" name="comentarios" id="comentarios" rows="3" placeholder="Ingrese a detalle el motivo del gasto"></textarea>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<div class="row">
 						<div class="col-xs-12 pull-right">
-							<button type="button" class="btn btn-default"><i class="ti ti-close"></i> Cancelar</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="ti ti-close"></i> Cancelar</button>
 							<button type="submit" class="btn btn-primary"><i class="ti ti-check"></i> Confirmar</button>
 						</div>
 					</div>

@@ -1,9 +1,9 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class vn_caja extends Base_Model {
+class in_consecutivo_codigos extends Base_Model {
 	public function  __construct() {
 		parent::__construct();
-		$this->table = 'vn_caja';
+		$this->table = 'in_consecutivo_codigos';
 		$this->primary_key = 'id';
 		$this->return_type = 'array';
 	}
@@ -18,20 +18,9 @@ class vn_caja extends Base_Model {
 		return $this->save($data);
 	}
 
-	# Comprobar el estatus de la caja
-	public function estatus(){
-		$this->db->select('estatus')
-		->from('vn_caja')
-		->order_by('id', 'DESC');
-		return $this->db->get()->row();
-	}
-
-	# Obtener el último id de la caja aperturada
+	#Metodo para obtener el consecutivo del codigo de barras personal
 	public function id() {
-		$this->db->select('id, estatus')
-			->from('vn_caja')
-			->order_by('id', 'DESC');
-		return $this->db->get()->row();
+		return $this->count();
 	}
 
 }

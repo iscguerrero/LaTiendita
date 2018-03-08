@@ -32,9 +32,33 @@
 						</a>
 					</li>
 					<li>
+						<a href="<?php echo base_url('Principal/Inicio') ?>">
+							<i class="ti-home"></i>
+							<p>Principal</p>
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url('Inventarios/MarcasDepartamentos') ?>">
+							<i class="ti-list"></i>
+							<p>Marcas y Departamentos</p>
+						</a>
+					</li>
+					<li>
 						<a href="<?php echo base_url('Inventarios/IngresarProducto') ?>">
 							<i class="ti-import"></i>
 							<p>Ingresar Producto</p>
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url('Inventarios/Producto') ?>">
+							<i class="fa fa-plus-square"></i>
+							<p>Nuevo Producto</p>
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo base_url('Inventarios/DetalleInventario') ?>">
+							<i class="ti-archive"></i>
+							<p>Detalle del Inventario</p>
 						</a>
 					</li>
 				</ul>
@@ -95,10 +119,13 @@
 	<script type="text/javascript" src="<?php echo base_url('assets/js/perfect-scrollbar.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/es6-promise-auto.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/moment.min.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/locale-es.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-switch-tags.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-notify.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/sweetalert2.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-selectpicker.js') ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-datetimepicker.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.cookie.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/paper-dashboard.js') ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('public/js/master.js') ?>"></script>

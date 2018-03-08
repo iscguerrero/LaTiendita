@@ -1,4 +1,4 @@
-<?php $this->layout('Layout', ['title'=>'mSV::Productos', 'sitepage'=>'Productos'])?>
+<?php $this->layout($_SESSION['cve_perfil'] == '001' ? '_Layout' : 'Layout', ['title'=>'mSV::Productos', 'sitepage'=>'Productos'])?>
 <?php $this->start('css')?>
 
 <?php $this->stop()?>

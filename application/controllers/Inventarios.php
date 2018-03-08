@@ -90,8 +90,29 @@ class Inventarios extends Base_Controller {
 		$this->load->model('in_stock');
 		$resumen = $this->in_stock->obtener(array('existencia >' => 0), "sum(precio_unitario * existencia) as valor, sum(costo_unitario * existencia) as costo, sum(precio_unitario * existencia) - sum(costo_unitario * existencia) as utilidad, sum(existencia) as existencia");
 		$resumen['items'] = count($this->in_stock->items());
-
 		exit(json_encode($resumen));
+	}
+	public function GenerarCodigo() {
+		$this->load->model('in_consecutivo_codigos');
+		$consecutivo = count($this->in_consecutivo_codigos->id()) == 0 ? 1 : $this->in_consecutivo_codigos->id() + 1;
+		$barcode = '1' . str_pad($consecutivo, 11, "0", STR_PAD_LEFT);
+		$barcode = $barcode . $this->generarDigitoControl($barcode);
+		exit(json_encode($barcode));
+	}
+
+	# Funcion para generar un digito de control de codigo de barras
+	function generarDigitoControl($barcode) {
+		$sum = 0;
+		for ($i = 1; $i <= 11; $i += 2)
+			$sum += 3 * $barcode[$i];
+		for ($i = 0; $i <= 10; $i += 2)
+			$sum += $barcode[$i];
+		$r = $sum % 10;
+		if ($r > 0)
+			$r = 10 - $r;
+		if($r > 10)
+			$r = 4;
+		return $r;
 	}
 
 # Alta / Edicion de nuevas elementos
@@ -160,6 +181,7 @@ class Inventarios extends Base_Controller {
 		$this->load->model('in_cat_productos');
 		$this->load->model('in_stock');
 		$this->load->model('in_kardex_movimientos');
+		$this->load->model('in_consecutivo_codigos');
 		$data = array(
 			'inventariable' => $this->input->post('ckInventariable'),
 			'cve_marca' => $this->input->post('selectMarca') * 1,
@@ -182,7 +204,7 @@ class Inventarios extends Base_Controller {
 			$data['cve_producto'] = $cve_producto;
 		}
 
-		$this->db->trans_start();
+		$this->db->trans_begin();
 			$cve_cat_producto = $this->in_cat_productos->alta($data);
 			if($this->input->post('inputCveCatProducto') == '') {
 				$dstock = array(
@@ -204,9 +226,15 @@ class Inventarios extends Base_Controller {
 				$this->in_stock->alta($dstock);
 				$this->in_kardex_movimientos->alta($dkardex);
 			}
-		$this->db->trans_complete();
+			$this->in_consecutivo_codigos->alta(array('estatus' => 'A'));
 
-		$this->db->trans_status() == false ? exit(json_encode(array('bandera'=>false, 'msj'=>'No se registraron cambios'))) : exit(json_encode(array('bandera'=>true, 'msj'=>'Registro agregado con éxito, ¿Deseas agregar un nuevo producto o ir al catálogo?')));
+		if($this->db->trans_status() == false) {
+			$this->db->trans_rollback();
+			exit(json_encode(array('bandera'=>false, 'msj'=>'No se registraron cambios')));
+		} {
+			$this->db->trans_commit();
+			exit(json_encode(array('bandera'=>true, 'msj'=>'Registro agregado con éxito, ¿Deseas agregar un nuevo producto o ir al catálogo?')));
+		}
 
 	}
 	public function GuardarIngreso() {
@@ -321,6 +349,35 @@ class Inventarios extends Base_Controller {
 	public function BuscarCodigo() {
 		$this->load->model('in_cat_productos');
 		exit(json_encode($this->in_cat_productos->buscarCodigo($this->input->post('codigo_de_barras'))));
+	}
+
+# Impresiones
+	public function Tarjeta($cve_cat_producto) {
+		$this->load->library('Pdf');
+		$pdf = new Pdf('P', 'mm', array(54, 210));
+
+		$pdf->SetMargins(1, 1, 5);
+		$pdf->SetAutoPageBreak(true, 15);
+		$pdf->AliasNbPages();
+
+		$pdf->AddPage();
+
+		$this->load->model('in_cat_productos');
+		$producto = $this->in_cat_productos->buscarCveCat($cve_cat_producto);
+
+		$pdf->SetFont('Courier', '', 9);
+		$pdf->EAN13(10, 12, $producto->codigo_de_barras);
+
+		$pdf->setXY(1, 33);
+
+		# Leyendas del formato / partidas
+			$pdf->SetFont('Times', 'B', 9);
+			$pdf->Cell(0, 4, utf8_decode('Produto: ' . $producto->producto), 0, 1, 'L', false);
+			$pdf->Cell(0, 4, utf8_decode('Marca: ' . $producto->marca), 0, 1, 'L', false);
+			$pdf->Cell(0, 4, utf8_decode('Depto: ' . $producto->departamento), 0, 1, 'L', false);
+			$pdf->Cell(0, 4, 'Precio: ' . number_format($producto->precio_unitario, 2), 0, 1, 'L', false);
+
+		$pdf->Output();
 	}
 
 }

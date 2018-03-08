@@ -1,4 +1,10 @@
 $(document).ready(function () {
+	tipos = ObtenerTiposGasto();
+	// Cargamos el combo de tipo de gastos
+	$('#tipos').append("<option value=''>Selecciona...</option>");
+	$.each(tipos, function (key, item) {
+		$('#tipos').append("<option value='" + item.cve_gasto + "'>" + item.descripcion + "</option>");
+	});
 	// Abrir el modal para la apertura de caja
 	$('#aAbrirCaja').click(function (e) {
 		e.preventDefault();
@@ -12,7 +18,7 @@ $(document).ready(function () {
 	// Abrir el modal para registrar un nuevo gasto
 	$('#aNuevoGasto').click(function (e) {
 		e.preventDefault();
-		$('#modalNuevoGasto').modal('show');
+		$('#modalGasto').modal('show');
 	});
 
 	// Enviar el formulario para abrir caja
@@ -123,4 +129,60 @@ $(document).ready(function () {
 		});
 	});
 
+	// Enviar el formulario para registrar un nuevo gasto
+	$('#formGasto').submit(function (e) {
+		e.preventDefault();
+		str = $('#formGasto').serialize();
+		$.ajax({
+			url: 'NuevoGasto',
+			type: 'POST',
+			async: true,
+			cache: false,
+			dataType: 'json',
+			data: str,
+			beforeSend: function () {
+				swal({
+					html: '<h3>Registrando gasto, espera...</h3>',
+					showConfirmButton: false,
+					type: 'info'
+				});
+			},
+			success: function (data) {
+				if (data.bandera == false) {
+					swal({
+						title: "Atiende!",
+						html: data.msj,
+						buttonsStyling: true,
+						confirmButtonClass: "btn btn-warning btn-fill",
+						type: 'warning'
+					});
+					return false
+				} else {
+					swal.close();
+					$('#modalGasto').modal('hide');
+					swal({
+						type: 'success',
+						title: "Atiende!",
+						html: data.msj,
+						buttonsStyling: true,
+						showCancelButton: true,
+						confirmButtonText: 'Si',
+						cancelButtonText: 'No',
+						confirmButtonClass: "btn btn-primary btn-fill",
+						cancelButtonClass: "btn btn-default btn-fill"
+					}).then(function (isConfirm) {
+						swal.close();
+						window.location.href = '../Punto/Inicio';
+					}, function () {
+						swal.close();
+					});
+				}
+			}
+		});
+	});
+
 });
+
+function ObtenerTiposGasto() {
+	return ajax('ObtenerTiposGasto');
+}

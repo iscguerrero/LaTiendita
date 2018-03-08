@@ -1,37 +1,37 @@
 $(document).ready(function () {
-	$('#tHistoriaCaja').bootstrapTable({
-		toolbar: ".toolbar",
-		clickToSelect: true,
-		showRefresh: true,
+	// Configuracion de la tabla de ingresos
+	$('#tablaCaja').bootstrapTable({
+		data: ObtenerHistoriaCaja(),
+		toolbar: '#toolbar',
 		search: true,
-		showToggle: true,
-		showColumns: true,
 		pagination: true,
-		searchAlign: 'left',
-		pageSize: 8,
-		clickToSelect: false,
-		pageList: [8, 10, 25, 50, 100],
-
-		formatShowingRows: function (pageFrom, pageTo, totalRows) {
-			//do nothing here, we don't want to show the text "showing x of y from..."
-		},
-		formatRecordsPerPage: function (pageNumber) {
-			return pageNumber + " rows visible";
-		},
-		icons: {
-			refresh: 'fa fa-refresh',
-			toggle: 'fa fa-th-list',
-			columns: 'fa fa-columns',
-			detailOpen: 'fa fa-plus-circle',
-			detailClose: 'ti-close'
-		}
+		pageSize: 10,
+		pageList: [5, 10, 25, 50],
+		columns: [[
+			{ title: 'Apuertura de caja', align: 'center', halign: 'center', valign: 'middle', colspan: 3 },
+			{ title: 'Cierre de caja', align: 'center', halign: 'center', valign: 'middle', colspan: 3 }
+		], [
+			{ field: 'affecha', title: 'Fecha', align: 'center' },
+			{ field: 'afhora', title: 'Hora', align: 'center' },
+			{ field: 'amonto', title: 'Monto', align: 'right' },
+			{ field: 'cffecha', title: 'Fecha', align: 'center' },
+			{ field: 'cfhora', title: 'Hora', align: 'center' },
+			{ field: 'cmonto', title: 'Monto', align: 'right' },
+		]]
 	});
 
-	//activate the tooltips after the data table is initialized
-	$('[rel="tooltip"]').tooltip();
-
-	$(window).resize(function () {
-		$table.bootstrapTable('resetView');
+	// Volver a generar el reporte
+	$('#formCaja').submit(function (e) {
+		e.preventDefault();
+		$('#tablaCaja').bootstrapTable('load', ObtenerHistoriaCaja());
+		$('#modalCaja').modal('hide');
 	});
 
 });
+
+// Funcion para obtener la lista de ingresos en el sistema
+function ObtenerHistoriaCaja() {
+	$inicio = $('#inicio').val();
+	$fin = $('#fin').val();
+	return ajax('ObtenerHistoriaCaja', { inicio: $inicio, fin: $fin });
+}

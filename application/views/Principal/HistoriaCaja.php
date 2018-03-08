@@ -3,6 +3,9 @@
 <?php $this->stop()?>
 <?php $this->start('vista')?>
 
+<div id="toolbar">
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCaja"><i class="fa fa-filter"></i> Filtros</button>
+</div>
 <div class="row">
 	<div class="col-xs-12">
 		<div class="card">
@@ -48,5 +51,6 @@
 <?php $this->stop()?>
 <?php $this->start('js')?>
 <script src="<?php echo base_url('assets/js/bootstrap-table.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/locale/bootstrap-table-es-MX.min.js')?>"></script>
 <script src="<?php echo base_url('public/js/Principal/HistoriaCaja.js') ?>"></script>
 <?php $this->stop()?>
