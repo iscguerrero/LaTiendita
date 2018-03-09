@@ -59,6 +59,8 @@
 <?php $this->stop()?>
 <?php $this->start('js')?>
 	<script src="<?php echo base_url('assets/js/bootstrap-table.js')?>"></script>
+	<script src="<?php echo base_url('assets/js/extensions/filter-control/bootstrap-table-filter-control.js') ?>"></script>
 	<script src="<?php echo base_url('assets/js/locale/bootstrap-table-es-MX.min.js')?>"></script>
+	
 	<script src="<?php echo base_url('public/js/Inventarios/Productos.js') ?>"></script>
 <?php $this->stop()?>
