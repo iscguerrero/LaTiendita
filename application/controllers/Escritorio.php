@@ -15,6 +15,7 @@ class Escritorio extends Base_Controller {
 		$this->load->model('vn_devolucion_encabezado');
 		$this->load->model('vn_gastos');
 		$this->load->model('in_stock');
+		$this->load->model('in_kardex_movimientos');
 
 		$where = array('fecha > ' => date('Y-m-d'), 'fecha <= ' => date('Y-m-d H:i:s'));
 		$campos = 'sum(total) as total';
@@ -26,9 +27,9 @@ class Escritorio extends Base_Controller {
 		$campos = 'sum(cantidad) as total';
 		$gastos = $this->vn_gastos->obtener($where, $campos);
 
-		$where = array('created_at > ' => date('Y-m-d'), 'created_at <= ' => date('Y-m-d H:i:s'));
-		$campos = 'sum(existencia * precio_unitario) as total';
-		$ingresos = $this->in_stock->obtener($where, $campos);
+		$where = array('tipo_movimiento'=>'E', 'created_at > ' => date('Y-m-d'), 'created_at <= ' => date('Y-m-d H:i:s'));
+		$campos = 'sum(cantidad * precio_unitario) as total';
+		$ingresos = $this->in_kardex_movimientos->obtener($where, $campos);
 
 		$ventasHora = $this->vn_remision_encabezado->VentaHora();
 		$ventasDia = $this->vn_remision_encabezado->VentaDia();

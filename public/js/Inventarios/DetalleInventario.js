@@ -6,7 +6,7 @@ $(document).ready(function () {
 	$('#valor').text('$' + formato_numero(resumen.valor, 2, '.', ','));
 	$('#costo').text('$' + formato_numero(resumen.costo, 2, '.', ','));
 	$('#utilidad').text('$' + formato_numero(resumen.utilidad, 2, '.', ','));
-	$('#existencia').text('$' + formato_numero(resumen.existencia, 2, '.', ',') + '|' + resumen.items);
+	$('#existencia').text(formato_numero(resumen.existencia, 2, '.', ',') + '|' + resumen.items);
 	// Cargamos los combos de la vista
 	$.each(deptos, function (key, item) {
 		$('#departamentos').append("<option value='" + item.cve_departamento + "'>" + item.descripcion + "</option>");

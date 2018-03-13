@@ -181,7 +181,7 @@ function finalizarDevolucion() {
 					cancelButtonClass: "btn btn-default btn-fill"
 				}).then(function (isConfirm) {
 					limpiarPunto();
-					window.open('../Punto/Inicio');
+					location.href = '../Punto/Inicio';
 				}, function () {
 					limpiarPunto();
 				});
