@@ -48,25 +48,6 @@
 		</a>
 	</div>
 	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-		<a href = "<?php echo base_url('Principal/ResumenCaja') ?>">
-			<div class="card">
-				<div class="card-content">
-					<div class="row">
-						<div class="col-xs-12 text-center">
-							<div class="icon-big icon-primary text-center">
-								<i class="ti-notepad"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card-footer text-center">
-					<hr />
-					<div class="stats">Resumen de Caja</div>
-				</div>
-			</div>
-		</a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/HistoriaCaja') ?>">
 			<div class="card">
 				<div class="card-content">

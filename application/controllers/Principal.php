@@ -16,9 +16,6 @@ class Principal extends Base_Controller {
 	public function Proveedores() {
 		echo $this->templates->render('Principal/Proveedores');
 	}
-	public function ResumenCaja() {
-		echo $this->templates->render('Principal/ResumenCaja');
-	}
 	public function ResumenFinanciero() {
 		echo $this->templates->render('Principal/ResumenFinanciero');
 	}
@@ -179,6 +176,56 @@ class Principal extends Base_Controller {
 			exit(json_encode(array('bandera' => true, 'msj' => 'El cambio para el cliente es de ' . number_format($devuelto, 2), 'folio' => $folio)));
 		}
 
+	}
+
+	public function EstadoResultados() {
+		$this->form_validation->set_rules('fi', 'Fecha Inicial', 'required', array('required' => 'Es necesario que proporciones la fecha inicial del estado de resultados'));
+		$this->form_validation->set_rules('ff', 'Fecha Final', 'required', array('required' => 'Es necesario que proporciones la fecha final del estado de resultados'));
+		if ($this->form_validation->run() === false) exit(json_encode(array('bandera' => false, 'msj' => 'Las validaciones del formulario no se completaron, atiende:<br>' . validation_errors())));
+
+		$fi = $this->str_to_date($this->input->post('fi'));
+		$ff = $this->str_to_date($this->input->post('ff'));
+
+		$this->load->model('vn_remision_encabezado');
+		$this->load->model('vn_remision_partidas');
+		$this->load->model('vn_devolucion_encabezado');
+		$this->load->model('vn_gastos');
+		$this->load->model('in_kardex_movimientos');
+		$this->load->model('vn_caja');
+
+		$where = array('fecha >= ' => $fi . ' 00:00:00', 'fecha <= ' => $ff . ' 23:59:59');
+		$campos = 'sum(total) as total';
+		$ingresos = $this->vn_remision_encabezado->obtener($where, $campos);
+
+		$devoluciones = $this->vn_devolucion_encabezado->obtener($where, $campos);
+
+		$campos = 'sum(cantidad) as total';
+		$gastos = $this->vn_gastos->obtener($where, $campos);
+
+		$where = array('tipo_movimiento' => 'S', 'cve_movimiento' => 'V', 'created_at >= ' => $fi . ' 00:00:00', 'created_at <= ' => $ff . ' 23:59:59');
+		$campos = 'SUM(costo_unitario * cantidad) AS total';
+		$costo = $this->in_kardex_movimientos->obtener($where, $campos);
+
+		$where = array('fecha_apertura >= ' => $fi . ' 00:00:00', 'fecha_apertura <= ' => $ff . ' 23:59:59');
+		$campos = 'sum(importe_apertura) as total';
+		$caja = $this->vn_caja->obtener($where, $campos);
+
+		$rventas = $this->vn_remision_encabezado->rventas($fi, $ff);
+		$rgastos = $this->vn_gastos->gastos($fi, $ff);
+
+		exit(json_encode(array(
+			'bandera' => true,
+			'ingresos' => $ingresos['total'],
+			'costo' => $costo['total'],
+			'caja' => $caja['total'],
+			'utilidadbruta' => $ingresos['total'] - $costo['total'] + $caja['total'],
+			'devoluciones' => $devoluciones['total'],
+			'gastos' => $gastos['total'],
+			'egresos' => $devoluciones['total'] + $gastos['total'],
+			'utilidad' => $ingresos['total'] - $costo['total'] + $caja['total'] - $devoluciones['total'] - $gastos['total'],
+			'rventas' => $rventas,
+			'rgastos' => $rgastos
+		)));
 	}
 
 }

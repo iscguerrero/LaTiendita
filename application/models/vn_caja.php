@@ -13,6 +13,11 @@ class vn_caja extends Base_Model {
 		return $this->filter($wheres, $campos);
 	}
 
+	# Obtener un registro
+	public function obtener($where, $campos) {
+		return $this->get($where, $campos);
+	}
+
 	# Nuevo registro para la tabla
 	public function alta($data) {
 		return $this->save($data);

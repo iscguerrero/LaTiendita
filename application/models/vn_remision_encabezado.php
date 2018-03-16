@@ -39,6 +39,18 @@ class vn_remision_encabezado extends Base_Model {
 		return $query->result();
 	}
 
+	# Generar listado de remisiones para el estado de resultados
+	public function rventas($fi, $ff) {
+		$this->db->select("vre.codigo_de_barras, DATE_FORMAT(vre.fecha, '%d-%M-%Y') AS fecha, vre.total AS ventas, SUM(vrp.costo_unitario * piezas) AS costo, SUM(vrp.precio_unitario * piezas_devueltas) AS devoluciones")
+			->from('vn_remision_encabezado vre')
+			->join('vn_remision_partidas vrp', 'vre.folio = vrp.folio', 'INNER')
+			->where('vre.fecha >= ', $fi . ' 00:0:00')
+			->where('vre.fecha <= ', $ff . ' 23:59:59')
+			->group_by('vre.folio');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	# Obtener las ventas por hora
 	public function VentaHora() {
 		$this->db->select("CONCAT(LPAD(HOUR(fecha), 2, 0), ':00') AS hora, SUM(total) as venta")
