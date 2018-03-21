@@ -13,13 +13,13 @@
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-5">
 						<div class="form-group">
 							<label for="codigo">Código de Barras</label>
-							<input type="text" placeholder="Leer código de barras" class="form-control" name="codigo" id="codigo" autofocus>
+							<input type="text" placeholder="Leer código de barras" class="form-control" name="codigo" id="codigo" autofocus required>
 						</div>
 					</div>
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-7">
 						<div class="form-group">
 							<label for="producto">Producto</label>
-							<input type="text" placeholder="o buscar por nombre" class="form-control" name="producto" id="producto">
+							<input type="text" placeholder="o buscar por nombre" class="form-control" name="producto" id="producto" required>
 						</div>
 					</div>
 					<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
@@ -43,7 +43,7 @@
 					<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
 						<div class="form-group">
 							<label for="cantidad">Cantidad a Ingresar</label>
-							<input type="number" class="form-control text-right" name="cantidad" id="cantidad" >
+							<input type="number" class="form-control text-right" name="cantidad" id="cantidad" required>
 						</div>
 					</div>
 				</div>

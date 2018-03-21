@@ -24,12 +24,13 @@ class vn_gastos extends Base_Model {
 	}
 
 	# Obtener un arreglo personalizado de los gastos en un periodo especifico
-	public function gastos($fi, $ff) {
-		$this->db->select("vg.cantidad, DATE_FORMAT(vg.fecha, '%d-%M-%Y') AS fecha, vcg.descripcion AS gasto, vg.descripcion as comentarios")
+	public function gastos($fi, $ff, $group = null) {
+		$this->db->select("sum(vg.cantidad) as cantidad, DATE_FORMAT(vg.fecha, '%d-%M-%Y') AS fecha, vcg.descripcion AS gasto, vg.descripcion as comentarios")
 			->from('vn_gastos vg')
 			->join('vn_cat_gastos vcg', 'vg.cve_gasto = vcg.cve_gasto', 'INNER')
 			->where('vg.fecha >=', $fi)
 			->where('vg.fecha <=', $ff);
+			if($group != '') $this->db->group_by('fecha');
 		$query = $this->db->get();
 		return $query->result();
 	}

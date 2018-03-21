@@ -67,10 +67,15 @@ class Principal extends Base_Controller {
 		$inicio = $this->str_to_date($this->input->post('inicio'));
 		$fin = $this->str_to_date($this->input->post('fin'));
 
-		$campos = "DATE_FORMAT(fecha_apertura, '%d-%M-%Y') AS affecha, DATE_FORMAT(fecha_apertura, '%r') AS afhora, DATE_FORMAT(fecha_cierre, '%d-%M-%Y') AS cffecha, DATE_FORMAT(fecha_cierre, '%r') AS cfhora, importe_apertura as amonto, importe_cierre as cmonto";
+		$campos = "date_format(fecha_apertura, '%Y-%m-%d') as fecha, DATE_FORMAT(fecha_apertura, '%d-%M-%Y') AS affecha, DATE_FORMAT(fecha_apertura, '%r') AS afhora, DATE_FORMAT(fecha_cierre, '%d-%M-%Y') AS cffecha, DATE_FORMAT(fecha_cierre, '%r') AS cfhora, importe_apertura as amonto, importe_cierre as cmonto";
 		$where = array('fecha_apertura >=' => $inicio, 'fecha_apertura <=' => $fin . ' 23:59:59');
+		$registros = $this->vn_caja->listar($where, $campos);
 
-		die(json_encode($this->vn_caja->listar($where, $campos)));
+		foreach ($registros as $key => $registro) {
+			$registros[$key]['csistema'] = $this->vn_caja->cierre_caja($registro['fecha']);
+		}
+
+		die(json_encode($registros));
 	}
 
 	public function NuevoGasto() {

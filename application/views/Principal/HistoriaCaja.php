@@ -30,11 +30,11 @@
 						<div class="col-xs-12">
 							<div class="form-group">
 								<label for="inicio">Inicio</label>
-								<input type="text" class="form-control datepicker" name="inicio" id="inicio" required >
+								<input type="text" class="form-control datepicker text-center" name="inicio" id="inicio" required >
 							</div>
 							<div class="form-group">
 								<label for="fin">Fin</label>
-								<input type="text" class="form-control datepicker" name="fin" id="fin" required >
+								<input type="text" class="form-control datepicker text-center" name="fin" id="fin" required >
 							</div>
 						</div>
 					</div>

@@ -15,6 +15,22 @@ $(document).ready(function () {
 			close: 'fa fa-remove'
 		}
 	});
+	// Configuracion del datepicker para seleccionar el mes
+	$('.mespicker').datetimepicker({
+		locale: 'es',
+		format: 'MMMM-YYYY',
+		icons: {
+			time: "fa fa-clock-o",
+			date: "fa fa-calendar",
+			up: "fa fa-chevron-up",
+			down: "fa fa-chevron-down",
+			previous: 'fa fa-chevron-left',
+			next: 'fa fa-chevron-right',
+			today: 'fa fa-screenshot',
+			clear: 'fa fa-trash',
+			close: 'fa fa-remove'
+		}
+	});
 });
 
 // Ajax generico
@@ -36,12 +52,12 @@ var ajax = function (url, str) {
 
 // Funcion para obtener la lista de marcas registradas en el sistema
 function ObtenerMarcas() {
-	return ajax('ObtenerMarcas', null);
+	return ajax('../Inventarios/ObtenerMarcas', null);
 }
 
 // Funcion para obtener la lista de departamentos registrados en el sistema
 function ObtenerDepartamentos() {
-	return ajax('ObtenerDepartamentos', null);
+	return ajax('../Inventarios/ObtenerDepartamentos', null);
 }
 
 // Funcion para obtener la lista de metricas registrados en el sistema

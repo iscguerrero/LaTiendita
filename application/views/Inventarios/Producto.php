@@ -26,7 +26,7 @@
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 							<label for="inputCodigo">Código de barras</label>
 							<div class="input-group">
-								<input type="text" class="form-control" name="inputCodigo" id="inputCodigo" autofocus>
+								<input type="text" class="form-control" name="inputCodigo" id="inputCodigo" autofocus required>
 								<span class="input-group-btn">
 									<button type="button" class="btn btn-default" id="generarCodigo" >Generar</button>
 								</span>
@@ -35,55 +35,55 @@
 						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 							<div class="form-group">
 								<label for="inputDescripcion">Descripción</label>
-								<input type="text" class="form-control" name="inputDescripcion" id="inputDescripcion" >
+								<input type="text" class="form-control" name="inputDescripcion" id="inputDescripcion" required>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-6 col-lg-6">
 							<div class="form-group">
 								<label for="selectMarca">Marca</label>
-								<select class="form-control" name="selectMarca" id="selectMarca" ></select>
+								<select class="form-control" name="selectMarca" id="selectMarca"required></select>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-6 col-lg-6">
 							<div class="form-group">
 								<label for="selectDepartamento">Departamento</label>
-								<select class="form-control" name="selectDepartamento" id="selectDepartamento" ></select>
+								<select class="form-control" name="selectDepartamento" id="selectDepartamento"  required></select>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
 								<label for="inputPrecio">Precio</label>
-								<input type="text" class="form-control text-right" name="inputPrecio" id="inputPrecio" >
+								<input type="number" class="form-control text-right" name="inputPrecio" id="inputPrecio"  required>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
 								<label for="inputCosto">Costo</label>
-								<input type="text" class="form-control text-right" name="inputCosto" id="inputCosto" >
+								<input type="number" class="form-control text-right" name="inputCosto" id="inputCosto"  required>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
 								<label for="inputExistencia">Existencia</label>
-								<input type="text" class="form-control text-right" name="inputExistencia" id="inputExistencia" >
+								<input type="number" class="form-control text-right" name="inputExistencia" id="inputExistencia"  required>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
 								<label for="inputPresentacion">Presentación</label>
-								<input type="text" class="form-control text-right" name="inputPresentacion" id="inputPresentacion" >
+								<input type="number" class="form-control text-right" name="inputPresentacion" id="inputPresentacion"  required>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
 								<label for="selectMetrica">Métrica</label>
-								<select name="selectMetrica" id="selectMetrica" class="form-control" ></select>
+								<select name="selectMetrica" id="selectMetrica" class="form-control"  required></select>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
 								<label for="selectVenta">En Venta</label>
-								<select name="selectVenta" id="selectVenta" class="form-control">
+								<select name="selectVenta" id="selectVenta" class="form-control"  required>
 									<option value="1">Si</option>
 									<option value="0">No</option>
 								</select>
@@ -92,7 +92,7 @@
 						<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
 								<label for="selectStatus">Estatus</label>
-								<select name="selectStatus" id="selectStatus" class="form-control">
+								<select name="selectStatus" id="selectStatus" class="form-control"  required>
 									<option value="A">Activo</option>
 									<option value="X">Inactivo</option>
 								</select>

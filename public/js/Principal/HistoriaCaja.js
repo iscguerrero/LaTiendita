@@ -9,14 +9,28 @@ $(document).ready(function () {
 		pageList: [5, 10, 25, 50],
 		columns: [[
 			{ title: 'Apuertura de caja', align: 'center', halign: 'center', valign: 'middle', colspan: 3 },
-			{ title: 'Cierre de caja', align: 'center', halign: 'center', valign: 'middle', colspan: 3 }
+			{ title: 'Cierre de caja', align: 'center', halign: 'center', valign: 'middle', colspan: 3 },
+			{ title: 'Sistema', align: 'right' }
 		], [
 			{ field: 'affecha', title: 'Fecha', align: 'center' },
 			{ field: 'afhora', title: 'Hora', align: 'center' },
-			{ field: 'amonto', title: 'Monto', align: 'right' },
+			{
+				field: 'amonto', title: 'Monto', align: 'right', formatter: function (value, row, index) {
+					return formato_numero(value, 2, '.', ',');
+				}
+			},
 			{ field: 'cffecha', title: 'Fecha', align: 'center' },
 			{ field: 'cfhora', title: 'Hora', align: 'center' },
-			{ field: 'cmonto', title: 'Monto', align: 'right' },
+			{
+				field: 'cmonto', title: 'Monto', align: 'right', formatter: function (value, row, index) {
+					return formato_numero(value, 2, '.', ',');
+				}
+			},
+			{
+				field: 'csistema', title: 'Monto Cierre', align: 'right', formatter: function (value, row, index) {
+					return formato_numero(value, 2, '.', ',');
+				}
+			}
 		]]
 	});
 

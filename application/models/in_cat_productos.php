@@ -28,9 +28,10 @@ class in_cat_productos extends Base_Model {
 		$this->db->group_by('icp.cve_cat_producto');
 		if(count($marcas) > 0) $this->db->where_in('icp.cve_marca', implode(',', $marcas));
 		if(count($departamentos) > 0) $this->db->where_in('icp.cve_departamento', implode(',', $departamentos));
-		if(count($estatus) > 0) $this->db->where_in('icp.estatus', implode(',', $estatus));
+		if(count($estatus) > 0) $this->db->where_in('icp.estatus', $estatus);
 		$query = $this->db->get();
 		return $query->result();
+		#return $this->db->get_compiled_select();
 	}
 
 	# Busqueda de productos por medio del autocomplete

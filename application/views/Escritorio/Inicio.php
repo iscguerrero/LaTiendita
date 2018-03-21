@@ -24,7 +24,8 @@
 			<div class="card-footer">
 				<hr />
 				<div class="stats">
-					<i class="ti-package"></i> <font id="piezasVentas"></font> artículos
+					<i class="ti-package"></i>
+					<font id="piezasVentas"></font> artículos
 				</div>
 			</div>
 		</div>
@@ -49,7 +50,8 @@
 			<div class="card-footer">
 				<hr />
 				<div class="stats">
-					<i class="ti-package"></i> <font id="piezasDevoluciones"></font> artículos
+					<i class="ti-package"></i>
+					<font id="piezasDevoluciones"></font> artículos
 				</div>
 			</div>
 		</div>
@@ -74,7 +76,8 @@
 			<div class="card-footer">
 				<hr />
 				<div class="stats">
-					<i class="ti-package"></i> <font id="piezasGastos"></font> gastos
+					<i class="ti-package"></i>
+					<font id="piezasGastos"></font> gastos
 				</div>
 			</div>
 		</div>
@@ -99,84 +102,65 @@
 			<div class="card-footer">
 				<hr />
 				<div class="stats">
-					<i class="ti-package"></i> <font id="piezasIngresos"></font> artículos
+					<i class="ti-package"></i>
+					<font id="piezasIngresos"></font> artículos
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-xs-12">
-		<div class="card">
-			<div class="card-content">
-				<div class="row">
-					<div class="col-xs-7">
-						<div class="numbers pull-left">
-							<font id="totalVentasDia"></font>
-						</div>
-					</div>
-					<div class="col-xs-5">
-						<div class="pull-right">
-							<span class="label label-success">
-								<font id="piezasVentaDia"></font> artículos
-							</span>
-						</div>
-					</div>
-				</div>
-				<h6 class="big-title"><span class="text-muted">Ventas por Hora en el Día</span></div>
-				<div id="horas"></div>
-			</div>
+
+<div class="card">
+	<div class="card-content">
+		<div class="numbers pull-left">
+			<font id="totalVentasDia"></font>
 		</div>
+		<div class="pull-right">
+			<span class="label label-success">
+				<font id="piezasVentaDia"></font> artículos
+			</span>
+		</div>
+		<h6 class="big-title">
+			<span class="text-muted">Ventas por Hora en el Día</span>
+		</h6>
+		<div id="horas"></div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-xs-12">
-		<div class="card">
-			<div class="card-content">
-				<div class="row">
-					<div class="col-xs-7">
-						<div class="numbers pull-left">
-							<font id="totalVentasMes"></font>
-						</div>
-					</div>
-					<div class="col-xs-5">
-						<div class="pull-right">
-							<span class="label label-success">
-								<font id="piezasVentaMes"></font> artículos
-							</span>
-						</div>
-					</div>
-				</div>
-				<h6 class="big-title"><span class="text-muted">Ventas diarías del mes de Enero</span></div>
-				<div id="mes"></div>
-			</div>
+<div class="card">
+	<div class="card-content">
+		<div class="numbers pull-left">
+			<font id="totalVentasMes"></font>
 		</div>
+		<div class="pull-right">
+			<span class="label label-success">
+				<font id="piezasVentaMes"></font> artículos
+			</span>
+		</div>
+		<h6 class="big-title">
+			<span class="text-muted">Ventas diarías del mes de Enero</span>
+		</h6>
+		<div id="mes"></div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-xs-12">
-		<div class="card">
-			<div class="card-content">
-				<div class="row">
-					<div class="col-xs-7">
-						<div class="numbers pull-left">
-							<font id="totalVentasAnio"></font>
-						</div>
-					</div>
-					<div class="col-xs-5">
-						<div class="pull-right">
-							<span class="label label-success">
-								<font id="piezasVentaAnio"></font> artículos
-							</span>
-						</div>
-					</div>
-				</div>
-				<h6 class="big-title"><span class="text-muted">Ventas mensuales del año <script>document.write(new Date().getFullYear())</script></span></div>
-				<div id="anio"></div>
-			</div>
+<div class="card">
+	<div class="card-content">
+		<div class="numbers pull-left">
+			<font id="totalVentasAnio"></font>
 		</div>
+		<div class="pull-right">
+			<span class="label label-success">
+				<font id="piezasVentaAnio"></font> artículos
+			</span>
+		</div>
+		<h6 class="big-title">
+			<span class="text-muted">Ventas mensuales del año
+				<script>document.write(new Date().getFullYear())</script>
+			</span>
+		</h6>
+		<div id="anio"></div>
 	</div>
 </div>
+
 <?php $this->stop()?>
 <?php $this->start('js')?>
 	<script src="<?php echo base_url('assets/js/raphael-min.js') ?>"></script>

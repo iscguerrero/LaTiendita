@@ -19,10 +19,9 @@ $(document).ready(function () {
 		search: true,
 		pagination: true,
 		pageSize: 10,
-		pageList: [5, 10, 25, 50],
+		pageList: [10, 25, 50],
 		columns: [
 			{ field: 'cve_cat_producto', title: 'cve_cat_producto', visible: false },
-			{ field: 'cve_producto', title: 'Clave', sortable: true },
 			{ field: 'descripcion', title: 'Descripción', sortable: true },
 			{ field: 'descMarca', title: 'Marca', sortable: true },
 			{ field: 'descDepto', title: 'Departamento', sortable: true },

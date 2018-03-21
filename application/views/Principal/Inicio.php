@@ -156,7 +156,7 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Importe</label>
-						<input type="text" class="form-control text-right" name="apertura" id="apertura" placeholder="Ingrese importe de apertura de caja">
+						<input type="number" class="form-control text-right" name="apertura" id="apertura" placeholder="Ingrese importe de apertura de caja" required >
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -184,7 +184,7 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Importe</label>
-						<input type="text" class="form-control text-right" name="cierre" id="cierre" placeholder="Ingrese importe de cierre de caja" >
+						<input type="number" class="form-control text-right" name="cierre" id="cierre" placeholder="Ingrese importe de cierre de caja" required>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -212,15 +212,15 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Importe</label>
-						<input type="text" class="form-control text-right" name="importe" id="importe" placeholder="Ingrese importe del gasto">
+						<input type="number" class="form-control text-right" name="importe" id="importe" placeholder="Ingrese importe del gasto" required>
 					</div>
 					<div class="form-group">
 						<label>Tipo de gasto</label>
-						<select class="form-control" name="tipos" id="tipos"></select>
+						<select class="form-control" name="tipos" id="tipos" required ></select>
 					</div>
 					<div class="form-group">
 						<label>Descripción</label>
-						<textarea class="form-control" name="comentarios" id="comentarios" rows="3" placeholder="Ingrese a detalle el motivo del gasto"></textarea>
+						<textarea class="form-control" name="comentarios" id="comentarios" rows="3" placeholder="Ingrese a detalle el motivo del gasto" required oninvalid="this.setCustomValidity('Ingresa una pequeña descripción del gasto')" oninput="setCustomValidity('')"></textarea>
 					</div>
 				</div>
 				<div class="modal-footer">

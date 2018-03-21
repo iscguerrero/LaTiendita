@@ -28,4 +28,15 @@ class vn_devolucion_encabezado extends Base_Model {
 		return $this->save($data);
 	}
 
+	public function rlistar($fi, $ff) {
+		$this->db->select("sum(total) as total, date_format(fecha, '%d-%M-%Y') as ffecha")
+		->from('vn_devolucion_encabezado')
+		->where('fecha >= ', $fi.' 00:00:00')
+		->where('fecha <= ', $ff.' 23:59:59')
+		->group_by('ffecha');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+
 }

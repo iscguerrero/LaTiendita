@@ -156,7 +156,7 @@
 				</div>
 				<div class="card-footer text-center">
 					<hr />
-					<div class="stats">Marcas y Departamentos</div>
+					<div class="stats">Catálogos</div>
 				</div>
 			</div>
 		</a>

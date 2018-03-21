@@ -26,13 +26,25 @@ $(document).ready(function () {
 			{ field: 'producto', title: 'Producto', align: 'left', sortable: true },
 			{ field: 'marca', title: 'Marca', align: 'left', sortable: true },
 			{ field: 'departamento', title: 'Departamento', align: 'left', sortable: true },
-			{ field: 'cantidad', title: 'Cantidad', align: 'right', halign: 'right' },
-			{ field: 'costo_unitario', title: 'Costo', align: 'right', halign: 'right' },
-			{ field: 'precio_unitario', title: 'Precio', align: 'right', halign: 'right' }
+			{
+				field: 'cantidad', title: 'Cantidad', align: 'right', halign: 'right', formatter: function (value, row, index) {
+					return formato_numero(value, 2, '.', ',');
+				}
+			},
+			{
+				field: 'costo_unitario', title: 'Costo', align: 'right', halign: 'right', formatter: function (value, row, index) {
+					return formato_numero(value, 2, '.', ',');
+				}
+			},
+			{
+				field: 'precio_unitario', title: 'Precio', align: 'right', halign: 'right', formatter: function (value, row, index) {
+					return formato_numero(value, 2, '.', ',');
+				}
+			}
 		]
 	});
 
-// Volver a generar el reporte
+	// Volver a generar el reporte
 	$('#formEgresos').submit(function (e) {
 		e.preventDefault();
 		$('#tablaEgresos').bootstrapTable('load', ObtenerEgresos());
@@ -50,5 +62,5 @@ function ObtenerEgresos() {
 	$estatus = [];
 	if ($('#ckVigentes').prop('checked') == true) $estatus.push('A');
 	if ($('#ckDiscontinuados').prop('checked') == true) $estatus.push('X');
-	return ajax('ObtenerMovimientos/S', {marcas: $marcas, departamentos: $deptos, estatus: $estatus, inicio: $inicio, fin: $fin});
+	return ajax('ObtenerMovimientos/S', { marcas: $marcas, departamentos: $deptos, estatus: $estatus, inicio: $inicio, fin: $fin });
 }

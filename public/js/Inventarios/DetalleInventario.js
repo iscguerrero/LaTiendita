@@ -29,10 +29,26 @@ $(document).ready(function () {
 			{ field: 'producto', title: 'Producto', sortable: true, align: 'left' },
 			{ field: 'marca', title: 'Marca', sortable: true, align: 'left' },
 			{ field: 'departamento', title: 'Departamento', sortable: true, align: 'left' },
-			{ field: 'existencia', title: 'Existencia', sortable: true, align: 'right', halign: 'right' },
-			{ field: 'precio', title: 'Precio', sortable: true, align: 'right', halign: 'right' },
-			{ field: 'costo', title: 'Costo', sortable: true, align: 'right', halign: 'right' },
-			{ field: 'utilidad', title: 'Utilidad', sortable: true, align: 'right', halign: 'right' }
+			{
+				field: 'existencia', title: 'Existencia', sortable: true, align: 'right', halign: 'right', formatter: function (value, row, index) {
+					return formato_numero(value, 2, '.', ',')
+				}
+			},
+			{
+				field: 'precio', title: 'Precio', sortable: true, align: 'right', halign: 'right', formatter: function (value, row, index) {
+					return formato_numero(value, 2, '.', ',')
+				}
+			},
+			{
+				field: 'costo', title: 'Costo', sortable: true, align: 'right', halign: 'right', formatter: function (value, row, index) {
+					return formato_numero(value, 2, '.', ',')
+				}
+			},
+			{
+				field: 'utilidad', title: 'Utilidad', sortable: true, align: 'right', halign: 'right', formatter: function (value, row, index) {
+					return formato_numero(value, 2, '.', ',')
+				}
+			}
 		]
 	});
 

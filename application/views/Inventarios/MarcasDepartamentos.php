@@ -1,42 +1,37 @@
-<?php $this->layout($_SESSION['cve_perfil'] == '001' ? '_Layout' : 'Layout', ['title'=>'mSV::Marcas y Departamentos', 'sitepage'=>'Marcas y Departamentos'])?>
+<?php $this->layout($_SESSION['cve_perfil'] == '001' ? '_Layout' : 'Layout', ['title'=>'mSV::Catálogos', 'sitepage'=>'Catálogos del Sistema'])?>
 <?php $this->start('css')?>
 
 <?php $this->stop()?>
 <link href="<?php echo base_url('resources/bootstrap-table/bootstrap-table.min.css')?>" rel="stylesheet">
 <?php $this->start('vista')?>
 
-<div class="row">
-	<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-0 col-lg-6">
-		<div class="card">
-			<div class="card-header">
-				<h4 class="card-title">Marcas</h4>
+
+<div class="card">
+	<div class="card-content">
+		<div class="nav-tabs-navigation">
+			<div class="nav-tabs-wrapper">
+				<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+					<li class="active"><a href="#tabmarcas" data-toggle="tab">Marcas</a></li>
+					<li><a href="#tabdepartamentos" data-toggle="tab">Departamentos</a></li>
+					<li><a href="#tabmetricas" data-toggle="tab">Métricas</a></li>
+				</ul>
 			</div>
-			<div class="card-content table-responsive table-full-width">
+		</div>
+		<div id="my-tab-content" class="tab-content text-center">
+			<div class="tab-pane active" id="tabmarcas">
 				<table class="table table-striped" id="tablaMarcas"></table>
 			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-0 col-lg-6">
-		<div class="card">
-			<div class="card-header">
-				<h4 class="card-title">Departamentos</h4>
-			</div>
-			<div class="card-content table-responsive table-full-width">
+			<div class="tab-pane" id="tabdepartamentos">
 				<table class="table table-striped" id="tablaDepartamentos"></table>
 			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-0 col-lg-6">
-		<div class="card">
-			<div class="card-header">
-				<h4 class="card-title">Metricas</h4>
-			</div>
-			<div class="card-content table-responsive table-full-width">
+			<div class="tab-pane" id="tabmetricas">
 				<table class="table table-striped" id="tablaMetricas"></table>
 			</div>
 		</div>
+		</div>
 	</div>
 </div>
+
 <div id="toolbarMarcas">
 	<button type='button' class='btn btn-primary' title='Alta nueva marca' id="btnAltaMarca"><i class='fa fa-plus-square'></i> Alta</button>
 </div>

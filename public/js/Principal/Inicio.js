@@ -10,16 +10,31 @@ $(document).ready(function () {
 		e.preventDefault();
 		$('#modalAbrirCaja').modal('show');
 	});
+	$('#modalAbrirCaja').on('shown.bs.modal', function () {
+		$('#apertura').focus();
+	}).on('hidden.bs.modal', function () {
+		$('#apertura').val('');
+	})
 	// Abrir el modal para cerrar la caja
 	$('#aCerrarCaja').click(function (e) {
 		e.preventDefault();
 		$('#modalCerrarCaja').modal('show');
 	});
+	$('#modalCerrarCaja').on('shown.bs.modal', function () {
+		$('#cierre').focus();
+	}).on('hidden.bs.modal', function () {
+		$('#cierre').val('');
+	})
 	// Abrir el modal para registrar un nuevo gasto
 	$('#aNuevoGasto').click(function (e) {
 		e.preventDefault();
 		$('#modalGasto').modal('show');
 	});
+	$('#modalGasto').on('shown.bs.modal', function () {
+		$('#importe').focus();
+	}).on('hidden.bs.modal', function () {
+		$('#importe').val('');
+	})
 
 	// Enviar el formulario para abrir caja
 	$('#formAbrirCaja').submit(function (e) {

@@ -39,11 +39,14 @@ class vn_remision_partidas extends Base_Model {
 	}
 
 	# Funcion para obtener el total de productos vendidos en el mes
-	public function PiezasVentaMes() {
+	public function PiezasVentaMes($mes = '', $anio = '') {
+		if($mes=='') $mes = date('n');
+		if($anio=='') $anio = date('Y');
 		$this->db->select('sum(vrp.piezas) as piezas')
 			->from('vn_remision_encabezado vre')
 			->join('vn_remision_partidas vrp', 'vre.folio = vrp.folio', 'INNER')
-			->where('MONTH(fecha)', date('n'));
+			->where('MONTH(fecha)', $mes)
+			->where('YEAR(fecha)', $anio);
 		return $this->db->get()->row();
 	}
 

@@ -36,7 +36,7 @@ class in_kardex_movimientos extends Base_Model {
 		->where('ikm.created_at <=', $fin . ' 23:59:59');
 		if (count($marcas) > 0) $this->db->where_in('icp.cve_marca', implode(',', $marcas));
 		if (count($departamentos) > 0) $this->db->where_in('icp.cve_departamento', implode(',', $departamentos));
-		if (count($estatus) > 0) $this->db->where_in('icp.estatus', implode(',', $estatus));
+		if (count($estatus) > 0) $this->db->where_in('icp.estatus', $estatus);
 		$this->db->order_by('id', 'ASC');
 		$query = $this->db->get();
 		return $query->result();

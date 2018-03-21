@@ -29,7 +29,7 @@
 		</a>
 	</div>
 	<div class="col-lg-3">
-		<a href = "#">
+		<a href = "<?php echo base_url('Reportes/VentasMensuales') ?>">
 			<div class="card">
 				<div class="card-content">
 					<div class="row">
@@ -67,7 +67,7 @@
 		</a>
 	</div>
 	<div class="col-lg-3">
-		<a href = "#">
+		<a href = "<?php echo base_url('Reportes/ReporteGastos') ?>">
 			<div class="card">
 				<div class="card-content">
 					<div class="row">
@@ -88,7 +88,7 @@
 </div>
 <div class="row">
 	<div class="col-lg-3">
-		<a href = "#">
+		<a href = "<?php echo base_url('Reportes/ReporteDevoluciones') ?>">
 			<div class="card">
 				<div class="card-content">
 					<div class="row">

@@ -6,11 +6,11 @@ $(document).ready(function () {
 		clickToSelect: true,
 		search: true,
 		pagination: true,
-		pageSize: 5,
-		pageList: [5, 10, 25, 50],
+		pageSize: 10,
+		pageList: [10, 25, 50],
 		columns: [
 			{ field: 'cve_marca', title: 'cve_marca', visible: false },
-			{ field: 'descripcion', title: 'Descripción', sortable: true },
+			{ field: 'descripcion', title: 'Descripción', align: 'left', sortable: true },
 			{ field: 'estatus', title: 'estatus', visible: false },
 			{
 				title: 'Acciones', align: 'right', formatter: function (value, row, index) {
@@ -32,11 +32,11 @@ $(document).ready(function () {
 		toolbar: '#toolbarDeptos',
 		search: true,
 		pagination: true,
-		pageSize: 5,
-		pageList: [5, 10, 25, 50],
+		pageSize: 10,
+		pageList: [10, 25, 50],
 		columns: [
 			{ field: 'cve_departamento', title: 'cve_departamento', visible: false },
-			{ field: 'descripcion', title: 'Descripción', sortable: true },
+			{ field: 'descripcion', title: 'Descripción', align: 'left', sortable: true },
 			{ field: 'estatus', title: 'estatus', visible: false },
 			{
 				title: 'Acciones', align: 'right', formatter: function (value, row, index) {
@@ -58,12 +58,12 @@ $(document).ready(function () {
 		toolbar: '#toolbarMetricas',
 		search: true,
 		pagination: true,
-		pageSize: 5,
-		pageList: [5, 10, 25, 50],
+		pageSize: 10,
+		pageList: [10, 25, 50],
 		columns: [
 			{ field: 'cve_metrica', title: 'cve_metrica', visible: false },
-			{ field: 'metrica', title: 'Métrica', sortable: true },
-			{ field: 'descripcion', title: 'Descripción', sortable: true },
+			{ field: 'metrica', title: 'Métrica', align: 'left', sortable: true },
+			{ field: 'descripcion', title: 'Descripción', align: 'left', sortable: true },
 			{ field: 'estatus', title: 'estatus', visible: false },
 			{
 				title: 'Acciones', align: 'right', formatter: function (value, row, index) {

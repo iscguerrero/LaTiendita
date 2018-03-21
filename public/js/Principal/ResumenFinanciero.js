@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	selectedItem = 0;
 	// Generamos el estado de resultados
 	$('#formParametros').submit(function (e) {
 		e.preventDefault();
@@ -50,6 +51,7 @@ $(document).ready(function () {
 		data: [],
 		search: true,
 		columns: [
+			{field: 'folio'},
 			{ field: 'codigo_de_barras', title: 'Folio', align: 'center' },
 			{ field: 'fecha', title: 'Fecha', align: 'center' },
 			{
@@ -66,8 +68,21 @@ $(document).ready(function () {
 				field: 'devoluciones', title: 'Devoluciones', align: 'right', formatter: function (value, row, index) {
 					return formato_numero(value, 2, '.', ',');
 				}
+			},
+			{
+				title: 'Acciones', align: 'right', formatter: function (value, row, index) {
+					return "<button type='button' class='btn btn-info btn-xs imprimir' title='Imprimir ticket'><i class='fa fa-file-pdf-o'></i> Imprimir</button>";
+				}
 			}
-		]
+		],
+		onClickRow: function (row, $element, field) {
+			selectedItem = row.folio;
+		}
+	});
+
+	// Imprimir la venta seleccionada
+	$('#rventas tbody').on('click', 'button.imprimir', function () {
+		window.open('../Punto/Ticket/' + selectedItem);
 	});
 
 	$('#rgastos').bootstrapTable({

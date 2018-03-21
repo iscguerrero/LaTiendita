@@ -99,7 +99,7 @@
 			<footer class="footer">
 				<div class="container-fluid">
 					<div class="copyright pull-right">
-						&copy; <script>document.write(new Date().getFullYear())</script>, <i class="fa fa-heart heart"></i> G&O Consultora
+						&copy; <script>document.write(new Date().getFullYear())</script>, DG Consultora <i class="fa fa-heart"></i> <i>ideas nacen, proyectos se cumplen</i>
 					</div>
 				</div>
 			</footer>
