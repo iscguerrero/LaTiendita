@@ -13,7 +13,7 @@
 				<div class="row">
 					<div class="col-xs-6">
 						<form action="#" id="formCodigo">
-							<input type="number" class="form-control" name="codigo" id="codigo" autofocus>
+							<input type="text" class="form-control" name="codigo" id="codigo" autofocus>
 						</form>
 					</div>
 					<div class="col-xs-6">
@@ -33,7 +33,7 @@
 									<span class="input-group-btn">
 										<button type="button" class="btn btn-default" id="cancelar">Cancelar</button>
 									</span>
-									<input type="number" class="form-control text-right" name="efectivo" id="efectivo" placeholder="Paga con...">
+									<input type="text" class="form-control text-right" name="efectivo" id="efectivo" placeholder="Paga con...">
 									<span class="input-group-btn">
 										<button type="button" class="btn btn-default" id="finalizar" >Finalizar</button>
 									</span>

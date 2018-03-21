@@ -51,7 +51,7 @@ $(document).ready(function () {
 		data: [],
 		search: true,
 		columns: [
-			{field: 'folio'},
+			{field: 'folio', visible: false},
 			{ field: 'codigo_de_barras', title: 'Folio', align: 'center' },
 			{ field: 'fecha', title: 'Fecha', align: 'center' },
 			{

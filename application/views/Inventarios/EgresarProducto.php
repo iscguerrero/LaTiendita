@@ -43,7 +43,7 @@
 					<div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
 						<div class="form-group">
 							<label for="cantidad">Cantidad a Egresar</label>
-							<input type="number" class="form-control text-right" name="cantidad" id="cantidad" >
+							<input type="text" class="form-control text-right" name="cantidad" id="cantidad" >
 						</div>
 					</div>
 				</div>

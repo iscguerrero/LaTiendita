@@ -40,7 +40,7 @@
 					<li>
 						<a href="<?php echo base_url('Inventarios/MarcasDepartamentos') ?>">
 							<i class="ti-list"></i>
-							<p>Marcas y Departamentos</p>
+							<p>Catálogos</p>
 						</a>
 					</li>
 					<li>
@@ -50,14 +50,8 @@
 						</a>
 					</li>
 					<li>
-						<a href="<?php echo base_url('Inventarios/Producto') ?>">
-							<i class="fa fa-plus-square"></i>
-							<p>Nuevo Producto</p>
-						</a>
-					</li>
-					<li>
-						<a href="<?php echo base_url('Inventarios/DetalleInventario') ?>">
-							<i class="ti-archive"></i>
+						<a href="<?php echo base_url('Inventarios/Productos') ?>">
+							<i class="ti-clipboard"></i>
 							<p>Detalle del Inventario</p>
 						</a>
 					</li>

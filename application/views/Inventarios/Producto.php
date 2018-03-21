@@ -53,25 +53,25 @@
 						<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
 								<label for="inputPrecio">Precio</label>
-								<input type="number" class="form-control text-right" name="inputPrecio" id="inputPrecio"  required>
+								<input type="text" class="form-control text-right" name="inputPrecio" id="inputPrecio"  required>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
 								<label for="inputCosto">Costo</label>
-								<input type="number" class="form-control text-right" name="inputCosto" id="inputCosto"  required>
+								<input type="text" class="form-control text-right" name="inputCosto" id="inputCosto"  required>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
 								<label for="inputExistencia">Existencia</label>
-								<input type="number" class="form-control text-right" name="inputExistencia" id="inputExistencia"  required>
+								<input type="text" class="form-control text-right" name="inputExistencia" id="inputExistencia"  required>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">
 							<div class="form-group">
 								<label for="inputPresentacion">Presentación</label>
-								<input type="number" class="form-control text-right" name="inputPresentacion" id="inputPresentacion"  required>
+								<input type="text" class="form-control text-right" name="inputPresentacion" id="inputPresentacion"  required>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-4 col-lg-4">

@@ -47,7 +47,7 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-lg-3">
+	<!--div class="col-lg-3">
 		<a href = "#">
 			<div class="card">
 				<div class="card-content">
@@ -65,7 +65,7 @@
 				</div>
 			</div>
 		</a>
-	</div>
+	</div-->
 	<div class="col-lg-3">
 		<a href = "<?php echo base_url('Reportes/ReporteGastos') ?>">
 			<div class="card">
@@ -85,8 +85,6 @@
 			</div>
 		</a>
 	</div>
-</div>
-<div class="row">
 	<div class="col-lg-3">
 		<a href = "<?php echo base_url('Reportes/ReporteDevoluciones') ?>">
 			<div class="card">

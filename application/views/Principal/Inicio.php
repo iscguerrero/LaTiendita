@@ -123,7 +123,7 @@
 			</div>
 		</a>
 	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+	<!--div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<a href = "<?php echo base_url('Principal/Proveedores') ?>">
 			<div class="card">
 				<div class="card-content">
@@ -141,7 +141,7 @@
 				</div>
 			</div>
 		</a>
-	</div>
+	</div-->
 </div>
 
 <!-- Modal para abrir la caja -->
@@ -156,7 +156,7 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Importe</label>
-						<input type="number" class="form-control text-right" name="apertura" id="apertura" placeholder="Ingrese importe de apertura de caja" required >
+						<input type="text" class="form-control text-right" name="apertura" id="apertura" placeholder="Ingrese importe de apertura de caja" required >
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -184,7 +184,7 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Importe</label>
-						<input type="number" class="form-control text-right" name="cierre" id="cierre" placeholder="Ingrese importe de cierre de caja" required>
+						<input type="text" class="form-control text-right" name="cierre" id="cierre" placeholder="Ingrese importe de cierre de caja" required>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -212,7 +212,7 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>Importe</label>
-						<input type="number" class="form-control text-right" name="importe" id="importe" placeholder="Ingrese importe del gasto" required>
+						<input type="text" class="form-control text-right" name="importe" id="importe" placeholder="Ingrese importe del gasto" required>
 					</div>
 					<div class="form-group">
 						<label>Tipo de gasto</label>

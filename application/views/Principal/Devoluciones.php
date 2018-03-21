@@ -9,11 +9,11 @@
 			<div class="card-header">
 				<h4 class="card-title">Registrar Devolución</h4>
 			</div>
-			<div class="card-content table-full-width">
+			<div class="card-content">
 				<div class="row">
 					<div class="col-xs-6">
 						<form action="#" id="formCodigo">
-							<input type="number" class="form-control" name="codigo" id="codigo" autofocus>
+							<input type="text" class="form-control" name="codigo" id="codigo" autofocus>
 						</form>
 					</div>
 				</div>
