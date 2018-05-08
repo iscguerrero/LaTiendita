@@ -216,7 +216,7 @@ class Inventarios extends Base_Controller {
 		if($this->db->trans_status() == false) {
 			$this->db->trans_rollback();
 			exit(json_encode(array('bandera'=>false, 'msj'=>'No se registraron cambios')));
-		} {
+		} else {
 			$this->db->trans_commit();
 			exit(json_encode(array('bandera'=>true, 'msj'=>'Registro agregado con éxito, ¿Deseas agregar un nuevo producto o ir al catálogo?')));
 		}

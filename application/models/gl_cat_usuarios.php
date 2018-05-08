@@ -1,7 +1,7 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class gl_cat_usuarios extends CI_Model{
+class Gl_cat_usuarios extends CI_Model{
 
 	# Constructor del modelo
 	function construct(){

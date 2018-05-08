@@ -1,6 +1,6 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class vn_remision_partidas extends Base_Model {
+class Vn_remision_partidas extends Base_Model {
 	public function  __construct() {
 		parent::__construct();
 		$this->table = 'vn_remision_partidas';

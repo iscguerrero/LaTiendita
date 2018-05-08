@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 #$config['base_url'] = 'http://177.242.130.80/LaTiendita';
-$config['base_url'] = 'http://localhost/LaTiendita';
+$config['base_url'] = 'http://192.168.0.6/LaTiendita';
 
 /*
 |--------------------------------------------------------------------------

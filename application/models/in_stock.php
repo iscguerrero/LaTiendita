@@ -1,6 +1,6 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class in_stock extends Base_Model {
+class In_stock extends Base_Model {
 	public function  __construct() {
 		parent::__construct();
 		$this->table = 'in_stock';
